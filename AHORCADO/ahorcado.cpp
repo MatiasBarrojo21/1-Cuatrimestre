@@ -55,11 +55,12 @@ void start(){
 	char word1[20], word2[20];
 	vaciar(word1);
 	vaciar(word2);
-	title();
-	uploadWord(word1, 'A', cantLetrasP[0]);
+	
 	title();
 	uploadWord(word2, 'B', cantLetrasP[1]);
 	game(puntaje[0], 'A' , cantLetrasP[1], word2);
+	title();
+	uploadWord(word1, 'A', cantLetrasP[0]);
 	game(puntaje[1], 'B' , cantLetrasP[0], word1);
 	title();
 	if(puntaje[0]>puntaje[1]){
