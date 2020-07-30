@@ -30,7 +30,7 @@ main(){
 	while(jugarN==true){
 		start();
 		
-		printf("\n\n\t¿Quieren volver a jugar? (S/N)\n\t----------->");
+		printf("\n\n\tÂ¿Quieren volver a jugar? (S/N)\n\t----------->");
 		scanf("%s", &op);
 		op[0]=toupper(op[0]);
 		if(op=="N"){
@@ -86,7 +86,7 @@ void uploadWord(char word[],char player, int &letras){
 	vaciar(word);
 	printf("\tIngresa la palabra letra por letra el jugador %c para el oponente.\n\t(Ingresar '0' para terminar de determinar letras) \n", player);
 	for(int i=0; i<20 ; i++){
-		printf("\n\t%d° = ", i+1);
+		printf("\n\t%dÂ° = ", i+1);
 		scanf("%s", &word[i]);
 		if(isalpha(word[i])){
 			letras++;
@@ -134,7 +134,7 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 				i++;
 			}
 			cout<<"\n\tPalabra que debe adivinar:" << aux <<endl;
-			cout<<"\n\tEstado del muñeco: " << contCuerpo <<endl;
+			cout<<"\n\tEstado del muÃ±eco: " << contCuerpo <<endl;
 			
 		}
 		else{
