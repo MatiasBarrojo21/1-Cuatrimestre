@@ -54,8 +54,6 @@ void start(){
 	char word1[20], word2[20];
 	vaciar(word1);
 	vaciar(word2);
-	title();
-	
 	
 	title();
 	uploadWord(word2, 'B', cantLetrasP[1]);
@@ -157,6 +155,7 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 }
 
 void title(){
+	
 	printf("\n\n\t\t==============================<|  AHORCADO  |>==============================\n\n\n");
 }
 
