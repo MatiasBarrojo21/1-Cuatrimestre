@@ -11,7 +11,7 @@ void start();
 void title();
 void game(int &puntaje, char jugador, int num, char palabra[]);
 bool verificar(char letra, int n, char aux[], char palabra[], int &aciertos);
-void blanquear(char aux[], int num);
+void rellenar(char aux[], int num);
 int cantLet(char palabra[]);
 void vaciar(char palabra[]);
 //	--------
@@ -30,8 +30,8 @@ main(){
 	while(jugarN==true){
 		start();
 		
-		printf("\n\n\tÂ¿Quieren volver a jugar? (S/N)\n\t----------->");
-		scanf("%s", &op);
+		printf("\n\n\t¿Quieren volver a jugar? (S/N)\n\t----------->");
+		scanf("%s", &op[0]);
 		op[0]=toupper(op[0]);
 		if(op=="N"){
 			jugarN=false;
@@ -48,13 +48,14 @@ main(){
 
 }
 
-
-
 	//pantalla de inicio
+	
 void start(){
 	char word1[20], word2[20];
 	vaciar(word1);
 	vaciar(word2);
+	title();
+	
 	
 	title();
 	uploadWord(word2, 'B', cantLetrasP[1]);
@@ -84,9 +85,9 @@ void vaciar(char palabra[]){
 void uploadWord(char word[],char player, int &letras){
 	letras=0;
 	vaciar(word);
-	printf("\tIngresa la palabra letra por letra el jugador %c para el oponente.\n\t(Ingresar '0' para terminar de determinar letras) \n", player);
+	printf("\tIngresa la palabra el jugador %c para el oponente, letra por letra (despues de cada letra presione ENTER).\n\t(Ingresar '0' para terminar de determinar letras) \n", player);
 	for(int i=0; i<20 ; i++){
-		printf("\n\t%dÂ° = ", i+1);
+		printf("\n\t%d° = ", i+1);
 		scanf("%s", &word[i]);
 		if(isalpha(word[i])){
 			letras++;
@@ -115,7 +116,7 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 	int aciertos=0;
 		
 	char aux[num];
-	blanquear(aux, num);
+	rellenar(aux, num);
 	title();
 	
 	printf("\n\t\t\t\t----> INICIO <----");
@@ -134,7 +135,7 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 				i++;
 			}
 			cout<<"\n\tPalabra que debe adivinar:" << aux <<endl;
-			cout<<"\n\tEstado del muÃ±eco: " << contCuerpo <<endl;
+			cout<<"\n\tEstado del muñeco: " << contCuerpo <<endl;
 			
 		}
 		else{
@@ -144,7 +145,7 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 	}
 	if(i==11){
 		puntaje=0;
-		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\t\tPerdiste, tienes 0 puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\tPerdiste, tienes 0 puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 	}
 	else{
 		puntaje=50-(2*contCuerpo);
@@ -172,7 +173,7 @@ bool verificar(char letra, int n, char aux[], char palabra[], int &c){
 	return valor;
 }
 
-void blanquear(char aux[], int num){
+void rellenar(char aux[], int num){
 	vaciar(aux);
 	for(int i=0; i<num ; i++){
 		aux[i]= '-';
