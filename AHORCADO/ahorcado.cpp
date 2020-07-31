@@ -12,30 +12,28 @@ void title();
 void game(int &puntaje, char jugador, int num, char palabra[]);
 bool verificar(char letra, int n, char aux[], char palabra[], int &aciertos);
 void rellenar(char aux[], int num);
-int cantLet(char palabra[]);
 void vaciar(char palabra[]);
+void crearLineas(char simbolo, int cantidad);
+
 //	--------
 
-
 int cantLetrasP[1], puntaje[1];
-
-		
-
-
+	
+	
 
 main(){
 	bool jugarN=true;
-	char op[0];
+	char op;
 	
 	while(jugarN==true){
 		start();
 		
 		printf("\n\n\t¿Quieren volver a jugar? (S/N)\n\t----------->");
-		scanf("%s", &op[0]);
-		op[0]=toupper(op[0]);
-		if(op=="N"){
+		scanf("%s", &op);
+		op=toupper(op);
+		if(op=='N'){
 			jugarN=false;
-			
+			printf("\n\n\n");
 		}
 		else{
 			system("cls");
@@ -48,7 +46,7 @@ main(){
 
 }
 
-	//pantalla de inicio
+//	pantalla de inicio
 	
 void start(){
 	char word1[20], word2[20];
@@ -63,15 +61,17 @@ void start(){
 	game(puntaje[1], 'B' , cantLetrasP[0], word1);
 	title();
 	if(puntaje[0]>puntaje[1]){
-		printf("\n\tEl ganador es el JUGADOR A.");
+		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR A.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 	}
 	if(puntaje[0]<puntaje[1]){
-		printf("\n\tEl ganador es el JUGADOR B.");
+		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR B.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 	}
 	if(puntaje[0]==puntaje[1]){
-		printf("\n\tEs un empate.");
+		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\t\tFUE EMPATE.\t\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 	}
 }
+
+//	limpia la variable
 
 void vaciar(char palabra[]){
 	for(int i=0; i<21; i++){
@@ -79,11 +79,14 @@ void vaciar(char palabra[]){
 	}
 }
 
-	//Carga de palabras
+//	Carga de palabra
+	
 void uploadWord(char word[],char player, int &letras){
 	letras=0;
 	vaciar(word);
-	printf("\tIngresa la palabra el jugador %c para el oponente, letra por letra (despues de cada letra presione ENTER).\n\t(Ingresar '0' para terminar de determinar letras) \n", player);
+	printf("\tIngresa la palabra el jugador %c para el oponente, letra por letra (despues de cada letra presione ENTER).\n\t(Ingresar '0' para terminar de agregar letras) \n", player);
+	printf("\t%c%cPalabras recomendadas: \n\n", 205, 205);
+	printf("\t\t\t1. Compilador\t2. Entorno\t3. Computadora\t4. Estructura\n\t\t\t5. Seleccion\t6. Repeticion\t7. Directiva\t8. Algoritmo\n\t\t\t9. Program\t10.Ejecucion\t11.Int\t\t12.Float\n\t\t\t13.Char\t\t14.Double\t15.Long\t\t16.If\n\t\t\t17.Else\t\t18.For\t\t19.While\t20.Return\n\t\t\t21.Break\t22.Switch\t23.Case\t\t24.Main\n\t\t\t25.Include\t26.Define\t27.Struct\t28.Cin\n");
 	for(int i=0; i<20 ; i++){
 		printf("\n\t%d° = ", i+1);
 		scanf("%s", &word[i]);
@@ -105,6 +108,7 @@ void uploadWord(char word[],char player, int &letras){
 	system("cls");
 }
 
+//	juego
 
 void game(int &puntaje, char jugador, int num, char palabra[]){
 	char letraInput;
@@ -112,13 +116,13 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 	bool valorResp;
 	bool partida=true;
 	int aciertos=0;
-		
 	char aux[num];
+
 	rellenar(aux, num);
 	title();
 	
-	printf("\n\t\t\t\t----> INICIO <----");
-	printf("\n\tTURNO DEL JUGADOR %c\n", jugador);
+	printf("\n\t\t\t----> INICIO <----");
+	printf("\n\t\t\tTURNO DEL JUGADOR %c\n", jugador);
 	cout<<"\n\tPalabra que debe adivinar:" << aux <<endl;
 	while( i<11 and aciertos!=num){
 		strupr(aux);
@@ -133,7 +137,7 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 				i++;
 			}
 			cout<<"\n\tPalabra que debe adivinar:" << aux <<endl;
-			cout<<"\n\tEstado del muñeco: " << contCuerpo <<endl;
+			cout<<"\n\tEstado del muñeco: " << contCuerpo<<endl;
 			
 		}
 		else{
@@ -156,8 +160,10 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 
 void title(){
 	
-	printf("\n\n\t\t==============================<|  AHORCADO  |>==============================\n\n\n");
+	printf("\n\n\t\t\t==============================<|  AHORCADO  |>==============================\n\n\n");
 }
+
+//	verifica que la letra ingresada se encuentra
 
 bool verificar(char letra, int n, char aux[], char palabra[], int &c){
 	letra=toupper(letra);
@@ -172,6 +178,8 @@ bool verificar(char letra, int n, char aux[], char palabra[], int &c){
 	return valor;
 }
 
+//	rellena de guiones la variable
+
 void rellenar(char aux[], int num){
 	vaciar(aux);
 	for(int i=0; i<num ; i++){
@@ -180,7 +188,11 @@ void rellenar(char aux[], int num){
 	
 }
 
-
+void crearLineas(char simbolo, int cantidad){
+	for(int i=0; i<cantidad; i++){
+		cout<< simbolo;
+	}
+}
 
 
 
