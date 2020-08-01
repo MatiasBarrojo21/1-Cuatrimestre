@@ -14,6 +14,7 @@ bool verificar(char letra, int n, char aux[], char palabra[], int &aciertos);
 void rellenar(char aux[], int num);
 void vaciar(char palabra[]);
 void crearLineas(char simbolo, int cantidad);
+void cuerpo(int numParte);
 
 //	--------
 
@@ -74,7 +75,7 @@ void start(){
 //	limpia la variable
 
 void vaciar(char palabra[]){
-	for(int i=0; i<21; i++){
+	for(int i=0; i<22; i++){
 		palabra[i]=' ';
 	}
 }
@@ -137,13 +138,16 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 				i++;
 			}
 			cout<<"\n\tPalabra que debe adivinar:" << aux <<endl;
-			cout<<"\n\tEstado del muñeco: " << contCuerpo<<endl;
-			
+			cout<<"\n\tEstado del muñeco: ";
+			cuerpo(contCuerpo);
+			cout<<"\n\t";
+			crearLineas('=', 40);
 		}
 		else{
 			printf("\n\tEl valor ingresado no es una letra. Vuelva a ingresar.");
 		}
 		contJugadas++;
+		
 	}
 	if(i==11){
 		puntaje=0;
@@ -192,6 +196,35 @@ void crearLineas(char simbolo, int cantidad){
 	for(int i=0; i<cantidad; i++){
 		cout<< simbolo;
 	}
+}
+
+// 	Cuerpo del ahorcado
+
+void cuerpo(int numParte){
+	
+	string partesCuerpo[12];	
+	partesCuerpo[0]="No hay partes plasmadas ";
+	partesCuerpo[1]=" Cabeza ";
+	partesCuerpo[2]="- Tronco ";
+	partesCuerpo[3]="- Brazo izquierdo ";
+	partesCuerpo[4]="- Brazo derecho ";
+	partesCuerpo[5]="- Pierna izquierda ";
+	partesCuerpo[6]="- Pierna derecha ";
+	partesCuerpo[7]="- Mano izquierda ";
+	partesCuerpo[8]="- Mano derecha ";
+	partesCuerpo[9]="- Pie izquierdo ";
+	partesCuerpo[10]="- Pie derecho ";
+	
+	if(numParte==0){
+		cout<<partesCuerpo[0];
+	}
+	else{
+		for(int i=1; i<numParte+1; i++){
+		cout<<partesCuerpo[i];
+		}
+	}
+	
+	
 }
 
 
