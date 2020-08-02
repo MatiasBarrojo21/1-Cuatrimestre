@@ -15,7 +15,9 @@ void rellenar(char aux[], int num);
 void vaciar(char palabra[]);
 void crearLineas(char simbolo, int cantidad);
 void cuerpo(int numParte);
-bool agrLetra(char listLetras[], char letra, int intentos);
+bool agrLetra(char listLetras[], char letra, int intentos, int &cantIntegradas);
+void mostrarLetras(char letras[], int cantIntegradas);
+void mostrarPalabra(char palabra[]);
 
 //	--------
 
@@ -61,7 +63,7 @@ void start(){
 	title();
 	
 	if(puntaje[0]>puntaje[1]){
-		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR A.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\");
+		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR A.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 	}
 	if(puntaje[0]<puntaje[1]){
 		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR B.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
@@ -117,16 +119,19 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 	bool partida=true;
 	int aciertos=0;
 	char aux[num];
+	int cantLetras=0;
 	char letras[contJugadas];
 
 	rellenar(aux, num);
-	title();
 	
-	printf("\n\t\t\t----> INICIO <----");
-	printf("\n\t\t\tTURNO DEL JUGADOR %c\n", jugador);
 	while( i<11 and aciertos!=num){
+		title();
+		printf("\n\t\t\t----> INICIO <----");
+		printf("\n\t\t\tTURNO DEL JUGADOR %c\n", jugador);
 		strupr(aux);
 		printf("\n\n\t|°°°°°°°JUGADA #%d°°°°°°°|\t\n", contJugadas);
+		cout<<"\n\tLetras ya ingresadas: ";
+		mostrarLetras(letras, cantLetras);
 		cout<<"\n\tPalabra que debe adivinar:" << aux <<endl;
 		cout<<"\tEstado del muñeco: ";
 		cuerpo(contCuerpo);
@@ -134,7 +139,7 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 		scanf("%s", &letraInput);
 	
 		if(isalpha(letraInput)){
-			if(agrLetra(letras, letraInput, contJugadas)==true){
+			if(agrLetra(letras, letraInput, contJugadas, cantLetras)==true){
 				valorResp = verificar(letraInput, num, aux, palabra, aciertos);
 				if(valorResp==false){
 					contCuerpo++;
@@ -143,17 +148,21 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 			}
 			else{
 				printf("\n\tLa letra ya fue ingresada. Vuelva a intentar.");
+				system("pause");
 			}
 			
 			cout<<"\n\t";
 			crearLineas('=', 40);
+			
 		}
 		else{
 			printf("\n\tEl valor ingresado no es una letra. Vuelva a ingresar.");
 			cout<<"\n\t";
 			crearLineas('=', 40);
+			system("pause");
 		}
 		contJugadas++;
+		system("cls");
 		
 	}
 	if(i==11){
@@ -205,7 +214,7 @@ void crearLineas(char simbolo, int cantidad){
 	}
 }
 
-// 	Cuerpo del ahorcado
+// 	Cuerpo del ahorcado 
 
 void cuerpo(int numParte){
 	
@@ -234,7 +243,9 @@ void cuerpo(int numParte){
 	
 }
 
-bool agrLetra(char listLetras[], char letra, int intentos){
+// 	Verificar si la letra ya esta integrada
+
+bool agrLetra(char listLetras[], char letra, int intentos, int &cantIntegradas){
 	bool valor=false;
 	
 	for(int i=0; i<intentos+1 ; i++){
@@ -246,12 +257,26 @@ bool agrLetra(char listLetras[], char letra, int intentos){
 		return false;
 	}
 	else{
+		letra=toupper(letra);
+		cantIntegradas++;
 		listLetras[intentos-1]=letra;
 		return true;
+		
 	}
 	
 	
 }
 
+void mostrarLetras(char letras[], int cantIntegradas){
+	
+	for(int i=0; i<cantIntegradas; i++){
+		cout<<letras[i];
+		cout<<"-";
+	}
+	if(cantIntegradas!=0){
+		cantIntegradas++;
+	}
+	
+}
 
 
