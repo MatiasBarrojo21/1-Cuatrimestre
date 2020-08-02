@@ -15,6 +15,7 @@ void rellenar(char aux[], int num);
 void vaciar(char palabra[]);
 void crearLineas(char simbolo, int cantidad);
 void cuerpo(int numParte);
+bool agrLetra(char listLetras[], char letra, int intentos);
 
 //	--------
 
@@ -41,9 +42,6 @@ main(){
 		}
 		
 	}
-	
-	
-
 
 }
 
@@ -61,8 +59,9 @@ void start(){
 	uploadWord(word1, 'A', cantLetrasP[0]);
 	game(puntaje[1], 'B' , cantLetrasP[0], word1);
 	title();
+	
 	if(puntaje[0]>puntaje[1]){
-		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR A.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR A.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\");
 	}
 	if(puntaje[0]<puntaje[1]){
 		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR B.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
@@ -118,44 +117,52 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 	bool partida=true;
 	int aciertos=0;
 	char aux[num];
+	char letras[contJugadas];
 
 	rellenar(aux, num);
 	title();
 	
 	printf("\n\t\t\t----> INICIO <----");
 	printf("\n\t\t\tTURNO DEL JUGADOR %c\n", jugador);
-	cout<<"\n\tPalabra que debe adivinar:" << aux <<endl;
 	while( i<11 and aciertos!=num){
 		strupr(aux);
-		printf("\n\tJUGADA #%d", contJugadas);
+		printf("\n\n\t|°°°°°°°JUGADA #%d°°°°°°°|\t\n", contJugadas);
+		cout<<"\n\tPalabra que debe adivinar:" << aux <<endl;
+		cout<<"\tEstado del muñeco: ";
+		cuerpo(contCuerpo);
 		printf("\n\tIngrese una letra: ");
 		scanf("%s", &letraInput);
 	
 		if(isalpha(letraInput)){
-			valorResp = verificar(letraInput, num, aux, palabra, aciertos);
-			if(valorResp==false){
-				contCuerpo++;
-				i++;
+			if(agrLetra(letras, letraInput, contJugadas)==true){
+				valorResp = verificar(letraInput, num, aux, palabra, aciertos);
+				if(valorResp==false){
+					contCuerpo++;
+					i++;
+				}
 			}
-			cout<<"\n\tPalabra que debe adivinar:" << aux <<endl;
-			cout<<"\n\tEstado del muñeco: ";
-			cuerpo(contCuerpo);
+			else{
+				printf("\n\tLa letra ya fue ingresada. Vuelva a intentar.");
+			}
+			
 			cout<<"\n\t";
 			crearLineas('=', 40);
 		}
 		else{
 			printf("\n\tEl valor ingresado no es una letra. Vuelva a ingresar.");
+			cout<<"\n\t";
+			crearLineas('=', 40);
 		}
 		contJugadas++;
 		
 	}
 	if(i==11){
 		puntaje=0;
-		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\tPerdiste, tienes 0 puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\tPerdiste, tienes 0 puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n");
 	}
 	else{
 		puntaje=50-(2*contCuerpo);
-		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\t\tObtuviste %d puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\t\tObtuviste %d puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n");
 	}
 	system("pause");
 	system("cls");
@@ -222,6 +229,25 @@ void cuerpo(int numParte){
 		for(int i=1; i<numParte+1; i++){
 		cout<<partesCuerpo[i];
 		}
+	}
+	
+	
+}
+
+bool agrLetra(char listLetras[], char letra, int intentos){
+	bool valor=false;
+	
+	for(int i=0; i<intentos+1 ; i++){
+		if(letra==listLetras[i]){
+			valor=true;
+		}
+	}
+	if(valor==true){
+		return false;
+	}
+	else{
+		listLetras[intentos-1]=letra;
+		return true;
 	}
 	
 	
