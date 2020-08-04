@@ -3,8 +3,9 @@
 #include <iostream>
 #include <math.h>
 #include <conio.h>
-#include <conio.c>
+#include "conio.c"
 #include <string.h>
+
 
 using namespace std;
 
@@ -28,11 +29,11 @@ int cantLetrasP[1], puntaje[1];
 ahorcado(){
 	bool jugarN=true;
 	char op;
-	
+
 	while(jugarN==true){
 		start();
-		
-		printf("\n\n\t풯uieren volver a jugar? (S/N)\n\t----------->");
+
+		printf("\n\n\t占폪uieren volver a jugar? (S/N)\n\t----------->");
 		scanf("%s", &op);
 		op=toupper(op);
 		if(op=='N'){
@@ -42,18 +43,18 @@ ahorcado(){
 		else{
 			system("cls");
 		}
-		
+
 	}
 
 }
 
 //	pantalla de inicio
-	
+
 void start(){
 	char word1[20], word2[20];
 	vaciar(word1);
 	vaciar(word2);
-	
+
 	title();
 	uploadWord(word2, 'B', cantLetrasP[1]);
 	game(puntaje[0], 'A' , cantLetrasP[1], word2);
@@ -71,7 +72,7 @@ void start(){
 	if(puntaje[0]==puntaje[1]){
 		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\t\tFUE EMPATE.\t\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 	}
-	
+
 	textcolor(WHITE);
 }
 
@@ -84,7 +85,7 @@ void vaciar(char palabra[]){
 }
 
 //	Carga de palabra
-	
+
 void uploadWord(char word[],char player, int &letras){
 	letras=0;
 	vaciar(word);
@@ -110,7 +111,7 @@ void uploadWord(char word[],char player, int &letras){
 				printf("\n\tSi desea terminar el valor debe ser '0'.");
 			}
 		}
-		
+
 	}
 	strupr(word);
 	system("cls");
@@ -129,13 +130,13 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 	char letras[contJugadas];
 
 	rellenar(aux, num);
-	
+
 	while( i<11 and aciertos!=num){
 		title();
 		printf("\n\t\t\t----> INICIO <----");
 		printf("\n\t\t\tTURNO DEL JUGADOR %c\n", jugador);
 		strupr(aux);
-		printf("\n\n\t|같같같캨UGADA #%d같같같�|\t\n", contJugadas);
+		printf("\n\n\t같같같같같같같JUGADA #%d같같같같같같같\t\n", contJugadas);
 		cout<<"\n\tLetras ya ingresadas: ";textcolor(YELLOW);
 		mostrarLetras(letras, cantLetras);
 		textcolor(WHITE);
@@ -154,7 +155,7 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 					i++;
 				}
 			}
-			else{	
+			else{
 				printf("\n\tLa letra ya fue ingresada. Vuelva a intentar.");
 				system("pause");
 			}
@@ -188,7 +189,7 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 	}
 	system("pause");
 	system("cls");
-	
+
 }
 
 void title(){
@@ -217,7 +218,7 @@ void rellenar(char aux[], int num){
 	for(int i=0; i<num ; i++){
 		aux[i]= '-';
 	}
-	
+
 }
 
 void crearLineas(char simbolo, int cantidad){
@@ -225,10 +226,10 @@ void crearLineas(char simbolo, int cantidad){
 		cout<< simbolo;
 	}
 }
-// 	Cuerpo del ahorcado 
+// 	Cuerpo del ahorcado
 void cuerpo(int numParte){
-	
-	string partesCuerpo[12];	
+
+	string partesCuerpo[12];
 	partesCuerpo[0]="No hay partes plasmadas ";
 	partesCuerpo[1]=" Cabeza ";
 	partesCuerpo[2]="- Tronco ";
@@ -240,7 +241,7 @@ void cuerpo(int numParte){
 	partesCuerpo[8]="- Mano derecha ";
 	partesCuerpo[9]="- Pie izquierdo ";
 	partesCuerpo[10]="- Pie derecho. ";
-	
+
 	if(numParte==0){
 		cout<<partesCuerpo[0];
 	}
@@ -258,14 +259,14 @@ void cuerpo(int numParte){
 		}
 		textcolor(WHITE);
 	}
-	
-	
+
+
 }
 // 	Verificar si la letra ya esta integrada
 bool agrLetra(char listLetras[], char letra, int intentos, int &cantIntegradas){
 	bool valor=true;
 	letra=toupper(letra);
-	
+
 	for(int i=0; i<cantIntegradas ; i++){
 		if(letra==listLetras[i]){
 			valor=false;
@@ -286,5 +287,3 @@ void mostrarLetras(char letras[], int cantIntegradas){
 		cout<<"-";
 	}
 }
-
-
