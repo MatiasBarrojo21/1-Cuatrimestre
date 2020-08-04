@@ -53,7 +53,7 @@ void menu(){
 
 void categorias(){
 	int op;
-	printf("\n\n\t\t\t\t\t\tCATEGORIAS\n");
+	printf("\n\n\n\n\n\n\t\t\t\tCATEGORIAS\n");
 	cout<<"\n\t";
 	textcolor(LIGHTRED);
 	crearLineas('=', 100);
@@ -87,7 +87,7 @@ void categorias(){
 
 void letras(){
 	int op;
-	printf("\n\n\t\t\t\t\t\tJUEGOS CON LETRAS\n");
+	printf("\n\n\n\n\n\n\t\t\t\tJUEGOS CON LETRAS\n");
 	cout<<"\n\t";
 	textcolor(LIGHTRED);
 	crearLineas('=', 100);
@@ -124,7 +124,7 @@ void numeros(){
 	crearLineas('=', 100);
 	textcolor(WHITE);
 
-	printf("\n\t\t\t\t1) MAYMEN.");
+	printf("\n\n\n\n\n\n\t\t\t\t1) MAYMEN.");
 	printf("\n\t\t\t\t2) WARCOIN - GUERRA DE MONEDAS");
 	printf("\n\t\t\t\t3) ADIVINUM");
 	printf("\n\t\t\t\t4) VOLVER ATRAS.");
