@@ -89,7 +89,7 @@ void uploadWord(char word[],char player, int &letras){
 	letras=0;
 	vaciar(word);
 	printf("\tIngresa la palabra el jugador %c para el oponente, letra por letra (despues de cada letra presione ENTER).\n\t(Ingresar '0' para terminar de agregar letras) \n", player);
-	printf("\t%c%cPalabras recomendadas: \n\n", 205, 205);
+	printf("\t%c%c%c Palabras recomendadas: \n\n", 205, 205,185);
 	textcolor(YELLOW);
 	textbackground(RED);
 	printf("\t\t\t1. Compilador\t2. Entorno\t3. Computadora\t4. Estructura\t\n\t\t\t5. Seleccion\t6. Repeticion\t7. Directiva\t8. Algoritmo\t\n\t\t\t9. Program\t10.Ejecucion\t11.Int\t\t12.Float\t\n\t\t\t13.Char\t\t14.Double\t15.Long\t\t16.If\t\t\n\t\t\t17.Else\t\t18.For\t\t19.While\t20.Return\t\n\t\t\t21.Break\t22.Switch\t23.Case\t\t24.Main\t\t\n\t\t\t25.Include\t26.Define\t27.Struct\t28.Cin\t\t\n");
@@ -143,8 +143,9 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 		cout<<"\tEstado del muñeco: ";
 		cuerpo(contCuerpo);
 		printf("\n\tIngrese una letra: ");
+		textbackground(BLUE);
 		scanf("%s", &letraInput);
-	
+		textbackground(BLACK);
 		if(isalpha(letraInput)){
 			if(agrLetra(letras, letraInput, contJugadas, cantLetras)==true){
 				valorResp = verificar(letraInput, num, aux, palabra, aciertos);
@@ -154,6 +155,7 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 				}
 			}
 			else{
+				
 				printf("\n\tLa letra ya fue ingresada. Vuelva a intentar.");
 				system("pause");
 			}
@@ -238,7 +240,7 @@ void cuerpo(int numParte){
 	partesCuerpo[7]="- Mano izquierda ";
 	partesCuerpo[8]="- Mano derecha ";
 	partesCuerpo[9]="- Pie izquierdo ";
-	partesCuerpo[10]="- Pie derecho ";
+	partesCuerpo[10]="- Pie derecho. ";
 	
 	if(numParte==0){
 		cout<<partesCuerpo[0];
@@ -246,8 +248,13 @@ void cuerpo(int numParte){
 	else{
 		if(numParte==10){
 			textcolor(LIGHTRED);
+			Beep(250, 100);
+			Beep(400, 100);
 		}
 		for(int i=1; i<numParte+1; i++){
+			if(i==7){
+				cout<<"\n\t";
+			}
 		cout<<partesCuerpo[i];
 		}
 		textcolor(WHITE);
