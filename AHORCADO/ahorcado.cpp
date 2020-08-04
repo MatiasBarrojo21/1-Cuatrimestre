@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include <math.h>
+#include <conio.h>
+#include <conio.c>
 #include <string.h>
 
 using namespace std;
@@ -22,8 +24,6 @@ void mostrarPalabra(char palabra[]);
 //	--------
 
 int cantLetrasP[1], puntaje[1];
-	
-	
 
 main(){
 	bool jugarN=true;
@@ -61,16 +61,18 @@ void start(){
 	uploadWord(word1, 'A', cantLetrasP[0]);
 	game(puntaje[1], 'B' , cantLetrasP[0], word1);
 	title();
-	
+	textcolor(YELLOW);
 	if(puntaje[0]>puntaje[1]){
-		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR A.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR A.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 	}
 	if(puntaje[0]<puntaje[1]){
-		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR B.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\tEl ganador es el JUGADOR B.\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 	}
 	if(puntaje[0]==puntaje[1]){
-		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\t\tFUE EMPATE.\t\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+		printf("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\t\t\t\t\t\tFUE EMPATE.\t\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 	}
+	
+	textcolor(WHITE);
 }
 
 //	limpia la variable
@@ -88,7 +90,11 @@ void uploadWord(char word[],char player, int &letras){
 	vaciar(word);
 	printf("\tIngresa la palabra el jugador %c para el oponente, letra por letra (despues de cada letra presione ENTER).\n\t(Ingresar '0' para terminar de agregar letras) \n", player);
 	printf("\t%c%cPalabras recomendadas: \n\n", 205, 205);
-	printf("\t\t\t1. Compilador\t2. Entorno\t3. Computadora\t4. Estructura\n\t\t\t5. Seleccion\t6. Repeticion\t7. Directiva\t8. Algoritmo\n\t\t\t9. Program\t10.Ejecucion\t11.Int\t\t12.Float\n\t\t\t13.Char\t\t14.Double\t15.Long\t\t16.If\n\t\t\t17.Else\t\t18.For\t\t19.While\t20.Return\n\t\t\t21.Break\t22.Switch\t23.Case\t\t24.Main\n\t\t\t25.Include\t26.Define\t27.Struct\t28.Cin\n");
+	textcolor(YELLOW);
+	textbackground(RED);
+	printf("\t\t\t1. Compilador\t2. Entorno\t3. Computadora\t4. Estructura\t\n\t\t\t5. Seleccion\t6. Repeticion\t7. Directiva\t8. Algoritmo\t\n\t\t\t9. Program\t10.Ejecucion\t11.Int\t\t12.Float\t\n\t\t\t13.Char\t\t14.Double\t15.Long\t\t16.If\t\t\n\t\t\t17.Else\t\t18.For\t\t19.While\t20.Return\t\n\t\t\t21.Break\t22.Switch\t23.Case\t\t24.Main\t\t\n\t\t\t25.Include\t26.Define\t27.Struct\t28.Cin\t\t\n");
+	textcolor(WHITE);
+	textbackground(BLACK);
 	for(int i=0; i<20 ; i++){
 		printf("\n\t%d° = ", i+1);
 		scanf("%s", &word[i]);
@@ -130,8 +136,9 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 		printf("\n\t\t\tTURNO DEL JUGADOR %c\n", jugador);
 		strupr(aux);
 		printf("\n\n\t|°°°°°°°JUGADA #%d°°°°°°°|\t\n", contJugadas);
-		cout<<"\n\tLetras ya ingresadas: ";
+		cout<<"\n\tLetras ya ingresadas: ";textcolor(YELLOW);
 		mostrarLetras(letras, cantLetras);
+		textcolor(WHITE);
 		cout<<"\n\tPalabra que debe adivinar:" << aux <<endl;
 		cout<<"\tEstado del muñeco: ";
 		cuerpo(contCuerpo);
@@ -167,11 +174,16 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 	}
 	if(i==11){
 		puntaje=0;
+		textcolor(LIGHTRED);
 		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\tPerdiste, tienes 0 puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n");
+		textcolor(WHITE);
 	}
 	else{
+		
 		puntaje=50-(2*contCuerpo);
-		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\t\tObtuviste %d puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n");
+		textcolor(LIGHTGREEN);
+		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\t\tObtuviste %d puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n", puntaje);
+		textcolor(WHITE);
 	}
 	system("pause");
 	system("cls");
@@ -179,10 +191,10 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 }
 
 void title(){
-	
+	textcolor(LIGHTRED);
 	printf("\n\n\t\t\t==============================<|  AHORCADO  |>==============================\n\n\n");
+	textcolor(WHITE);
 }
-
 //	verifica que la letra ingresada se encuentra
 
 bool verificar(char letra, int n, char aux[], char palabra[], int &c){
@@ -197,7 +209,6 @@ bool verificar(char letra, int n, char aux[], char palabra[], int &c){
 	}
 	return valor;
 }
-
 //	rellena de guiones la variable
 
 void rellenar(char aux[], int num){
@@ -213,9 +224,7 @@ void crearLineas(char simbolo, int cantidad){
 		cout<< simbolo;
 	}
 }
-
 // 	Cuerpo del ahorcado 
-
 void cuerpo(int numParte){
 	
 	string partesCuerpo[12];	
@@ -235,16 +244,18 @@ void cuerpo(int numParte){
 		cout<<partesCuerpo[0];
 	}
 	else{
+		if(numParte==10){
+			textcolor(LIGHTRED);
+		}
 		for(int i=1; i<numParte+1; i++){
 		cout<<partesCuerpo[i];
 		}
+		textcolor(WHITE);
 	}
 	
 	
 }
-
 // 	Verificar si la letra ya esta integrada
-
 bool agrLetra(char listLetras[], char letra, int intentos, int &cantIntegradas){
 	bool valor=false;
 	
@@ -264,9 +275,7 @@ bool agrLetra(char listLetras[], char letra, int intentos, int &cantIntegradas){
 		
 	}
 	
-	
 }
-
 void mostrarLetras(char letras[], int cantIntegradas){
 	
 	for(int i=0; i<cantIntegradas; i++){
