@@ -154,15 +154,12 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 					i++;
 				}
 			}
-			else{
-				
+			else{	
 				printf("\n\tLa letra ya fue ingresada. Vuelva a intentar.");
 				system("pause");
 			}
-			
 			cout<<"\n\t";
 			crearLineas('=', 40);
-			
 		}
 		else{
 			printf("\n\tEl valor ingresado no es una letra. Vuelva a ingresar.");
@@ -172,16 +169,18 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 		}
 		contJugadas++;
 		system("cls");
-		
 	}
 	if(i==11){
 		puntaje=0;
 		textcolor(LIGHTRED);
-		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\tPerdiste, tienes 0 puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n");
+		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\tPerdiste, tienes 0 puntos. La palabra era: ");
+		for(int l=0; l<num; l++){
+			cout<<palabra[l];
+		}
+		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n");
 		textcolor(WHITE);
 	}
 	else{
-		
 		puntaje=50-(2*contCuerpo);
 		textcolor(LIGHTGREEN);
 		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\t\tObtuviste %d puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n", puntaje);
@@ -264,35 +263,28 @@ void cuerpo(int numParte){
 }
 // 	Verificar si la letra ya esta integrada
 bool agrLetra(char listLetras[], char letra, int intentos, int &cantIntegradas){
-	bool valor=false;
+	bool valor=true;
+	letra=toupper(letra);
 	
-	for(int i=0; i<intentos+1 ; i++){
+	for(int i=0; i<cantIntegradas ; i++){
 		if(letra==listLetras[i]){
-			valor=true;
+			valor=false;
 		}
 	}
-	if(valor==true){
+	if(valor==false){
 		return false;
 	}
 	else{
-		letra=toupper(letra);
 		cantIntegradas++;
 		listLetras[intentos-1]=letra;
 		return true;
-		
 	}
-	
 }
 void mostrarLetras(char letras[], int cantIntegradas){
-	
 	for(int i=0; i<cantIntegradas; i++){
 		cout<<letras[i];
 		cout<<"-";
 	}
-	if(cantIntegradas!=0){
-		cantIntegradas++;
-	}
-	
 }
 
 
