@@ -25,7 +25,7 @@ void mostrarPalabra(char palabra[]);
 
 int cantLetrasP[1], puntaje[1];
 
-main(){
+ahorcado(){
 	bool jugarN=true;
 	char op;
 	
