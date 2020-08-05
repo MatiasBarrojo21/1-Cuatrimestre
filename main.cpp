@@ -5,7 +5,6 @@
 #include <string.h>
 #include "ahorcado.cpp"
 #include "Adivinum.cpp"
-//#include "MAYMEN.cpp"
 
 using namespace std;
 

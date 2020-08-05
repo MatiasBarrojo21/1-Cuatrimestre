@@ -249,10 +249,15 @@ void cuerpo(int numParte){
 			Beep(400, 100);
 		}
 		for(int i=1; i<numParte+1; i++){
+			if(i==4){
+				cout<<"\n\t";
+			}
 			if(i==7){
 				cout<<"\n\t";
 			}
 		cout<<partesCuerpo[i];
+		//hacer if que solo permita mostrar si i es distinto de 0;
+		//UBICACION DE PARTES DEL CUERPO. EJ: cuerpoFigura(i); <---- define que figura debe mostrar
 		}
 		textcolor(WHITE);
 	}
