@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <iostream>
 #include <math.h>
-#include <conio.h>
 #include <string.h>
 #include "ahorcado.cpp"
+#include "Adivinum.cpp"
 //#include "MAYMEN.cpp"
-//#include "Adivinum.cpp"
+
 using namespace std;
 
 void menu();
@@ -139,11 +139,11 @@ void numeros(){
 	scanf("%d", &op);
 
 	switch(op){
-		case 1: Beep(250, 100);system("cls"); // maymen();
+		case 1: Beep(250, 100);system("cls"); //maymen();
 		break;
 		case 2: Beep(250, 100);system("cls"); //warcoin();
 		break;
-		case 3: Beep(250, 100);system("cls"); //adivinum();
+		case 3: Beep(250, 100);system("cls"); adivinum();
 		break;
 		case 4: Beep(250, 100);system("cls"); categorias();
 		break;
@@ -185,7 +185,7 @@ void Juegos(){
 		break;
 		case 3: Beep(250, 100);system("cls"); //warcoin();
 		break;
-		case 4: Beep(250, 100);system("cls"); //adivinum();
+		case 4: Beep(250, 100);system("cls"); adivinum();
 		break;
 		case 5: Beep(250, 100);system("cls"); menu();
 		break;
