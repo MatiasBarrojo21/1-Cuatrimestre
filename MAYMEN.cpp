@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <conio.h>
+#include <conio.c>
 
 int NumeroGenerado();
 void Inicio(int N, int Y, int Puntaje);
