@@ -13,31 +13,26 @@ void categorias();
 void Juegos();
 void letras();
 void numeros();
-
+void marco(int x, int y);
+	
 main(){
+	system("mode 120, 35");
 	menu();
 }
 
 void menu(){
+	
 	int op;
-	printf("\n\n\t\t\t\t\t\tMENU\n");
-	cout<<"\n\t";
-	textcolor(LIGHTRED);
-	crearLineas('=', 100);
 	textcolor(WHITE);
-
+	printf("\n\n\t\t\t\t\t\t\tMENU\n");
 	printf("\n\n\n\n\n\n\t\t\t\t1) Categorias.");
 	printf("\n\t\t\t\t2) Todos los juegos.");
 	printf("\n\t\t\t\t3) Exit.");
-
-	textcolor(LIGHTRED);
-	cout<<"\n\n\n\n\n\n\t";
-	crearLineas('=', 100);
-	textcolor(WHITE);
-	cout<<"\n\n\n";
-
+	marco(43, 23);
 	printf("\n\t\t\tINGRESA LA OPCION: ");
 	scanf("%d", &op);
+	
+	
 
 	switch(op){
 		case 1: Beep(250, 100);system("cls"); categorias();
@@ -52,22 +47,11 @@ void menu(){
 
 void categorias(){
 	int op;
-	printf("\n\n\t\t\t\tCATEGORIAS\n");
-	cout<<"\n\t";
-	textcolor(LIGHTRED);
-	crearLineas('=', 100);
-	textcolor(WHITE);
-
+	printf("\n\n\t\t\t\t\t\t     CATEGORIAS\n");
 	printf("\n\n\n\n\n\n\t\t\t\t1) Juegos con NUMEROS.");
 	printf("\n\t\t\t\t2) Juegos con LETRAS.");
 	printf("\n\t\t\t\t3) VOLVER ATRAS.");
-
-	textcolor(LIGHTRED);
-	cout<<"\n\n\n\n\n\n\t";
-	crearLineas('=', 100);
-	textcolor(WHITE);
-	cout<<"\n\n\n";
-
+	marco(43, 23);
 	printf("\n\t\t\tINGRESA LA OPCION: ");
 	scanf("%d", &op);
 
@@ -86,21 +70,10 @@ void categorias(){
 
 void letras(){
 	int op;
-	printf("\n\n\t\t\t\tJUEGOS CON LETRAS\n");
-	cout<<"\n\t";
-	textcolor(LIGHTRED);
-	crearLineas('=', 100);
-	textcolor(WHITE);
-
+	printf("\n\n\t\t\t\t\t\tJUEGOS CON LETRAS\n");
 	printf("\n\n\n\n\n\n\t\t\t\t1) AHORCADO.");
 	printf("\n\t\t\t\t2) VOLVER ATRAS.");
-
-	textcolor(LIGHTRED);
-	cout<<"\n\n\n\n\n\n\t";
-	crearLineas('=', 100);
-	textcolor(WHITE);
-	cout<<"\n\n\n";
-
+	marco(43, 23);
 	printf("\n\t\t\tINGRESA LA OPCION: ");
 	scanf("%d", &op);
 
@@ -118,22 +91,11 @@ void letras(){
 void numeros(){
 		int op;
 	printf("\n\n\t\t\t\t\t\tJUEGOS CON NUMEROS\n");
-	cout<<"\n\t";
-	textcolor(LIGHTRED);
-	crearLineas('=', 100);
-	textcolor(WHITE);
-
 	printf("\n\n\n\n\n\n\t\t\t\t1) MAYMEN.");
 	printf("\n\t\t\t\t2) WARCOIN - GUERRA DE MONEDAS");
 	printf("\n\t\t\t\t3) ADIVINUM");
 	printf("\n\t\t\t\t4) VOLVER ATRAS.");
-
-	textcolor(LIGHTRED);
-	cout<<"\n\n\n\n\n\n\t";
-	crearLineas('=', 100);
-	textcolor(WHITE);
-	cout<<"\n\n\n";
-
+	marco(43, 23);	
 	printf("\n\t\t\tINGRESA LA OPCION: ");
 	scanf("%d", &op);
 
@@ -157,23 +119,12 @@ void numeros(){
 void Juegos(){
 	int op;
 	printf("\n\n\t\t\t\t\t\tJUEGOS CON LETRAS\n");
-	cout<<"\n\t";
-	textcolor(LIGHTRED);
-	crearLineas('=', 100);
-	textcolor(WHITE);
-
 	printf("\n\n\n\n\n\n\t\t\t\t1) AHORCADO.");
 	printf("\n\t\t\t\t2) MAYMEN.");
 	printf("\n\t\t\t\t3) WARCOIN - GUERRA DE MONEDAS");
 	printf("\n\t\t\t\t4) ADIVINUM");
 	printf("\n\t\t\t\t5) VOLVER ATRAS.");
-
-	textcolor(LIGHTRED);
-	cout<<"\n\n\n\n\n\n\t";
-	crearLineas('=', 100);
-	textcolor(WHITE);
-	cout<<"\n\n\n";
-
+	marco(43, 23);
 	printf("\n\t\t\tINGRESA LA OPCION: ");
 	scanf("%d", &op);
 
@@ -192,3 +143,28 @@ void Juegos(){
 	}
 
 }
+
+void marco(int x, int y){
+	char vd=219;
+	HANDLE hCon;
+	textcolor(LIGHTRED);	
+	for(int j=10; j<109; j++){
+		gotoxy(j,5);cout<<vd;
+		gotoxy(j,19);cout<<vd;
+	}
+	textcolor(WHITE);
+	for(int k=5; k<20; k++){
+		gotoxy(9, k);cout<<vd;
+		gotoxy(109, k);cout<<vd;
+	}
+
+	gotoxy(x, y);
+}
+
+
+
+
+
+
+
+
