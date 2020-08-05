@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <iostream>
 #include <math.h>
-#include <conio.h>
 #include "conio.c"
 #include <string.h>
 #include <windows.h>
-#include <MMsystem.h>
 
 using namespace std;
 

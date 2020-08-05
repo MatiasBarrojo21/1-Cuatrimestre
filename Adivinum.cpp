@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <conio.h>
-#include <conio.c>
 #include <iostream>
+
+using namespace std;
 
 void generarNum(int container[4], int &Num);
 void Titulo();
@@ -17,7 +17,7 @@ int Numero, y, Punt=10;
 int mismaP, diferenteP, container[4];
 char Jugar;
 
-main(){	
+adivinum(){	
 	bool Opcion=true;
 		while(Opcion==true){
 			generarNum(container, y);

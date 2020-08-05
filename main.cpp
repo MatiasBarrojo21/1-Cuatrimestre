@@ -53,7 +53,7 @@ void menu(){
 
 void categorias(){
 	int op;
-	printf("\n\n\n\n\n\n\t\t\t\tCATEGORIAS\n");
+	printf("\n\n\t\t\t\tCATEGORIAS\n");
 	cout<<"\n\t";
 	textcolor(LIGHTRED);
 	crearLineas('=', 100);
@@ -87,13 +87,13 @@ void categorias(){
 
 void letras(){
 	int op;
-	printf("\n\n\n\n\n\n\t\t\t\tJUEGOS CON LETRAS\n");
+	printf("\n\n\t\t\t\tJUEGOS CON LETRAS\n");
 	cout<<"\n\t";
 	textcolor(LIGHTRED);
 	crearLineas('=', 100);
 	textcolor(WHITE);
 
-	printf("\n\t\t\t\t1) AHORCADO.");
+	printf("\n\n\n\n\n\n\t\t\t\t1) AHORCADO.");
 	printf("\n\t\t\t\t2) VOLVER ATRAS.");
 
 	textcolor(LIGHTRED);
@@ -157,7 +157,7 @@ void numeros(){
 
 void Juegos(){
 	int op;
-	printf("\n\n\t\t\t\t\t\tMENU\n");
+	printf("\n\n\t\t\t\t\t\tJUEGOS CON LETRAS\n");
 	cout<<"\n\t";
 	textcolor(LIGHTRED);
 	crearLineas('=', 100);
