@@ -12,9 +12,22 @@ void rango(int &mayor, int &menor, int NumOrig, int Num_Ingresado);
 main(){
 	int n, Punt=10, y;
 		y= NumeroGenerado();
-		printf("\n MAYMEN %d", 537);
-		printf("\n ======");
-		Inicio(n, 537, Punt);
+		gotoxy(60, 5);printf("MAYMEN");
+		for(int i=59; i<67; i++){
+			gotoxy(i, 4); printf("%c", 205);
+			gotoxy(i, 6); printf("%c", 205);
+		}
+			for(int i=4; i<7; i++){
+			gotoxy(58, i); printf("%c", 186);
+			gotoxy(67, i); printf("%c", 186);
+		}
+		
+		gotoxy(58, 4); printf("%c", 201);
+		gotoxy(58, 6); printf("%c", 200);
+		gotoxy(67, 4); printf("%c", 187);
+		gotoxy(67, 6); printf("%c", 188);
+		
+		Inicio(n, y, Punt);
 }
 
 int NumeroGenerado(){
