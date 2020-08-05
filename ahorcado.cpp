@@ -28,20 +28,18 @@ void mostrarPalabra(char palabra[]);
 int cantLetrasP[1], puntaje[1];
 
 ahorcado(){
-	bool jugarN=true;
-	char op;
+	bool Opcion=true;
+	char Jugar;
 
-	while(jugarN==true){
+	while(Opcion==true){
 		start();
 
-		printf("\n\n\t�Quieren volver a jugar? (S/N)\n\t----------->");
-		scanf("%s", &op);
-		op=toupper(op);
-		if(op=='N'){
-			jugarN=false;
-			printf("\n\n\n");
-		}
-		else{
+		printf("\n\n\tQuieres volver a jugar?(s/n): ");
+		scanf("%s", &Jugar);
+		Jugar=toupper(Jugar);
+		if(Jugar=='N'){
+			Opcion=false;
+		}else{
 			system("cls");
 		}
 
