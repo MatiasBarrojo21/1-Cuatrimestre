@@ -6,6 +6,8 @@
 #include "ahorcado.cpp"
 #include "Adivinum.cpp"
 
+A ICON MOVEABLE PURE LOADONCALL DISCARDABLE "nombreDelIcono.ico";
+
 using namespace std;
 
 void menu();
@@ -146,7 +148,6 @@ void Juegos(){
 
 void marco(int x, int y){
 	char vd=219;
-	HANDLE hCon;
 	textcolor(LIGHTRED);	
 	for(int j=10; j<109; j++){
 		gotoxy(j,5);cout<<vd;
@@ -157,7 +158,6 @@ void marco(int x, int y){
 		gotoxy(9, k);cout<<vd;
 		gotoxy(109, k);cout<<vd;
 	}
-
 	gotoxy(x, y);
 }
 
