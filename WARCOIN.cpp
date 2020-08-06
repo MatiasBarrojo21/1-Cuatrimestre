@@ -10,13 +10,15 @@
 
 void PilaMoneda();
 void Titulo();
-void juego();
-int turno();
+void PedirDatos();
+void GenerarTurno();
+void Juego();
+void Informacion();
 void usuario();
 void computadora();
 void GraficMonedas();
 //Global
-int pila=0, moneda, minimo, maximo,  extraccion=0;
+int pila=0, moneda, minimo, maximo,  extraccion=0, turno=0;
 bool comienza;
 
 main(){
@@ -25,8 +27,11 @@ main(){
 	while(op==true){
 		PilaMoneda();
 		Titulo();
-		juego();
-		gotoxy(5, 15); printf("\nQuieres volver a jugar? (Para SI ingrese '1', para NO ingrese '2'): ");
+		PedirDatos();
+		GenerarTurno();
+		Juego();
+		textcolor(YELLOW);
+		gotoxy(5, 15); printf("\n%c Quieres volver a jugar? (Para SI ingrese '1', para NO ingrese '2'): ", 175);
 		scanf("%d", &verificar);
 		printf("\n");
 				if(verificar==2){
@@ -40,13 +45,11 @@ main(){
 
 void PilaMoneda(){
 	srand(time(NULL));
-	pila=rand()%(51-1);
-	if(pila<10){
-		pila+=10;
-	}
+	pila=1+rand()%(50+1-1);
 }
+
 void Titulo(){
-	textcolor(LIGHTMAGENTA);
+	textcolor(5);
 		for(int i=56; i<65; i++){
   			gotoxy(i, 3); printf("%c", 205);
     		gotoxy(i, 5); printf("%c", 205);
@@ -65,92 +68,98 @@ void Titulo(){
 	gotoxy(67,4); printf("<============================================");
 }
 
-void juego(){
-	int verificar;
-	textcolor(WHITE);
-	gotoxy(35, 8); printf("%cIngresar el valor minimo de monedas a sacar por turno: ", 175);
+void PedirDatos(){
+	textcolor(WHITE); 
+	gotoxy(34, 8); printf("%cIngresar el valor minimo de monedas a sacar por turno: ", 175);
 	scanf("%d", &minimo);
-	gotoxy(35, 10); printf("%cIngresar el valor maximo de monedas a sacar por turno: ", 175);
+	gotoxy(34, 10); printf("%cIngresar el valor maximo de monedas a sacar por turno: ", 175);
 	scanf("%d", &maximo);
-	gotoxy(5,11); printf("----------------------------------------------------------------------------------------------------------------\n");
-	verificar=turno();
-		if(verificar==1){
-			textcolor(LIGHTRED);
-			printf("\n\t\tInicia la partida el usuario.\n");
-		}
-		else{
-			textcolor(LIGHTRED);
-			printf("\n\tInicia la partida la computadora.\n");
-		}
-			while(pila>0 and pila>minimo){
-				if(verificar==2){
-					computadora();
-					textcolor(GREEN);
-					printf("\n\t\tQuedan %d monedas\n",pila);
-					verificar--;
-				}
-					if(verificar==1){
-						usuario();
-						textcolor(GREEN);
-						printf("\n\t\tQuedan %d monedas\n",pila);
-						verificar++;
-					}
-			}
-	Sleep(500);
-	system("cls");
-	
-	if(verificar==1 and pila==0){
-		textcolor(LIGHTRED);
-		for(int i=39; i<47; i++){
-			gotoxy(i, 5); printf("%c", 205);
-			gotoxy(i, 11); printf("%c", 205);
-		}
-		for(int i=5; i<12; i++){
-			gotoxy(39, i); printf("%c", 205);
-			gotoxy(46, i); printf("%c", 205);
-		}
-		gotoxy(55, 8); printf("LA COMPUTADORA GANO!!! Puntaje obtenido: 0");
-	}
-		if(verificar==2 and pila==0){
-			textcolor(GREEN);
-				for(int i=53; i<80; i++){
-					gotoxy(i, 5); printf("%c", 205);
-					gotoxy(i, 11); printf("%c", 205);
-				}
-					for(int i=5; i<12; i++){
-						gotoxy(53, i); printf("%c", 205);
-						gotoxy(79, i); printf("%c", 205);
-					}
-					
-					gotoxy(55, 8); printf("GANASTE!!! Puntaje obtenido: 5");
-		}
-			if(pila!=0){
-				textcolor(LIGHTRED);
-					for(int i=52; i<72; i++){
-						gotoxy(i, 5); printf("%c", 205);
-						gotoxy(i, 11); printf("%c", 205);
-					}
-						for(int i=5; i<12; i++){
-							gotoxy(52, i); printf("%c", 186);
-							gotoxy(71, i); printf("%c", 186);
-						}
-						gotoxy(52, 5); printf("%c", 201);
-						gotoxy(52, 11); printf("%c", 200);
-						gotoxy(71, 5); printf("%c", 187);
-						gotoxy(71, 11); printf("%c", 188);
-						gotoxy(55, 8); printf("NO HAY GANADOR");
-			}
+	gotoxy(5,13); printf("----------------------------------------------------------------------------------------------------------------\n");
 }
 
-int turno(){
-	return 1 + rand()%(2+1 - 1);	
+void Juego(){
+	int contador=0, terminar=1;
+		while(terminar!=0){
+			if(turno==2){
+				textcolor(GREEN); printf("\n\t\tLa pila tiene %d modenas\n",pila);
+				computadora();
+				if(pila<=minimo){
+						terminar=0;
+					}
+				turno--;
+					
+			}
+				if(turno==1){
+					textcolor(GREEN); printf("\n\t\tLa pila tiene %d modenas\n",pila);
+					usuario();
+					textcolor(GREEN);
+						if(pila<=minimo){
+							terminar=0;
+						}
+					turno++;
+				}
+				contador++;
+					if(contador==2){
+						Sleep(500);
+						system("cls");
+						contador=0;
+						Titulo();
+						Informacion();
+					}
+		}
+		system("cls");
+	if(turno==1 and pila==0){
+		textcolor(GREEN);
+			for(int i=46; i<85; i++){
+				gotoxy(i, 5); printf("%c", 205);
+				gotoxy(i, 11); printf("%c", 205);
+			}
+				for(int i=5; i<12; i++){
+					gotoxy(46, i); printf("%c", 186);
+					gotoxy(84, i); printf("%c", 186);
+				}
+		gotoxy(46, 5); printf("%c", 201);
+		gotoxy(46, 11); printf("%c", 200);
+		gotoxy(84, 5); printf("%c", 187);
+		gotoxy(84, 11); printf("%c", 188);
+		gotoxy(50, 8); printf("GANASTE!!! Puntaje obtenido: 5");
+	}else{
+		textcolor(LIGHTRED);
+			for(int i=37; i<85; i++){
+				gotoxy(i, 5); printf("%c", 205);
+				gotoxy(i, 11); printf("%c", 205);
+			}
+				for(int i=5; i<12; i++){
+					gotoxy(37, i); printf("%c", 186);
+					gotoxy(84, i); printf("%c", 186);
+				}	
+		gotoxy(37, 5); printf("%c", 201);
+		gotoxy(37, 11); printf("%c", 200);
+		gotoxy(84, 5); printf("%c", 187);
+		gotoxy(84, 11); printf("%c", 188);
+		gotoxy(40, 8); printf("LA COMPUTADORA GANO!!! Puntaje obtenido: 0");
+	}
+}
+
+void GenerarTurno(){
+	turno= 1 + rand()%(2+1 - 1);
+		if(turno==1){
+			textcolor(LIGHTRED); printf("\n\t\tInicia la partida el usuario.\n");
+		}else{
+			textcolor(LIGHTRED); printf("\n\tInicia la partida la computadora.\n");
+		}
+}
+
+void Informacion(){
+	textcolor(WHITE); 
+	gotoxy(34, 8); printf("%cLa cantidad minima permitida para sacar monedas es: %d", 175, minimo);
+	gotoxy(34, 10); printf("%cLa cantidad maxima permitida para sacar monedas es: %d", 175, maximo);
+	gotoxy(5,13); printf("----------------------------------------------------------------------------------------------------------------\n");
 }
 
 void usuario(){
-	textcolor(YELLOW);
-	printf("\n\t%cTurno del usuario%c\n", 175, 174);
-	textcolor(WHITE);
-	printf("\n\tElija la cantidad de monedas a sacar: ");
+	textcolor(YELLOW); printf("\n\t%cTurno del usuario%c\n", 175, 174);
+	textcolor(WHITE); printf("\n\tElija la cantidad de monedas a sacar: ");
 	scanf("%d", &moneda);
 		if(moneda<=maximo and moneda>=minimo){
 			pila-=moneda;
@@ -163,10 +172,9 @@ void usuario(){
 }
 
 void computadora(){
-	textcolor(3);
-	printf("\n\t%cTurno de la computadora%c\n", 175, 174);
-	textcolor(WHITE);
+	textcolor(3); printf("\n\t%cTurno de la computadora%c\n", 175, 174);
+	Sleep(500);
 	extraccion= minimo + rand()%(maximo + 1 - minimo);
-	printf("\n\tLa computadora saco %d monedas\n", extraccion);
+	textcolor(WHITE); printf("\n\tLa computadora saco %d monedas\n", extraccion);
 	pila-=extraccion;
 }
