@@ -9,6 +9,7 @@ int NumeroGenerado();
 void Inicio(int N, int Y, int Puntaje);
 void rango(int &mayor, int &menor, int NumOrig, int Num_Ingresado);
 void titleMM();
+void barracarga();;
 
 
 main(){
@@ -29,7 +30,9 @@ void Inicio(int N, int Y, int Puntaje ){
 	titleMM();
 	
 	for (int X=1; X<=10; X++){
-			printf("\n\n\t\t\t========== Intento %d ========== ",X);
+			printf("\n\n\t\t\t============================== Intento %d ============================== \n\n\n\t\t\t",X);
+			printf("EL numero se encuentra entre %d y %d\n\t\t\t", numMen, numMay);
+			printf("Ingrese el numero: ");
 			scanf("%d", &N);
 
 			if(N>=1 && N<=999){
@@ -38,26 +41,33 @@ void Inicio(int N, int Y, int Puntaje ){
 					X=10;
 				}
 					if (N>Y){
-						printf("\n El numero secreto es menor y se encuentra entre %d y %d\n", numMen, numMay);
+						printf("\t\t\tEl numero secreto es menor y se encuentra entre %d y %d\n\n\n\t\t\t", numMen, numMay);
 						Puntaje--;
+						crearLineas('=', 71);
 					}
 					if (N<Y){
-						printf("\n El numero secreto es mayor y se encuentra entre %d y %d\n", numMen, numMay);
+						printf("\t\t\tEl numero secreto es mayor y se encuentra entre %d y %d\n\n\n\t\t\t", numMen, numMay);
 						Puntaje--;
+						crearLineas('=', 71);
 					}
 			}
 			else{
-				printf("\nTiene que ingresar un numero entre 1 y 999, intente nuevamente\n");
+				printf("\t\t\tTiene que ingresar un numero entre 1 y 999, intente nuevamente\n\n\n\t\t\t");
 				X--;
-
+				crearLineas('=', 71);
 			}
+			if(X<10){
+				barracarga();
+			}
+			system("cls");
+			titleMM();
 		}
 		
 	if(Puntaje>=1){
-		printf("\n Acertaste! Puntaje obtenido: %d", Puntaje);
+		printf("\n\n\n\t\t\t Acertaste! Puntaje obtenido: %d", Puntaje);
 	}else{
-		printf("\n Perdiste! Puntaje Obtenido %d", Puntaje);
-		printf("\n El nuemero a adivinar era %d", Y);
+		printf("\n\n\n\t\t\t Perdiste! Puntaje Obtenido %d", Puntaje);
+		printf("\n\t\t\t El nuemero a adivinar era %d", Y);
 	}
 }
 
@@ -69,6 +79,19 @@ void rango(int &mayor, int &menor, int NumOrig, int Num_Ingresado){
 		mayor=Num_Ingresado;
 	}
 	
+}
+
+void barracarga(){
+	textcolor(YELLOW);
+	gotoxy(25, 18);
+	
+	for(int i=0; i<4;i++){
+		Sleep(700);
+		crearLineas(219, 13);
+		cout<<"      ";
+	}
+	textcolor(WHITE);
+	cout<<"\n";
 }
 
 void titleMM(){
