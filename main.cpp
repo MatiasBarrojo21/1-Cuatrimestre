@@ -17,8 +17,12 @@ void numeros();
 void marco(int x, int y);
 	
 main(){
+	int bandera=1;
 	system("mode 120, 35");
-	menu();
+	while(bandera=1){
+		menu();
+	}
+	
 }
 
 void menu(){

@@ -31,12 +31,15 @@ ahorcado(){
 	char Jugar;
 	while(Opcion==true){
 		start();
-		printf("\n\n\tQuieres volver a jugar?(s/n): ");
+		printf("\n\n\tQuieres volver a jugar?(S/N): ");
 		scanf("%s", &Jugar);
 		Jugar=toupper(Jugar);
+		cout<<Jugar;
 		if(Jugar=='N'){
 			Opcion=false;
+			system("cls");
 		}else{
+			Opcion=true;
 			system("cls");
 		}
 	}
@@ -160,17 +163,17 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 	if(i==11){
 		puntaje=0;
 		textcolor(LIGHTRED);
-		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\tPerdiste, tienes 0 puntos. La palabra era: ");
+		printf("\n\n\n\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\t\t\t\tPerdiste, tienes 0 puntos. La palabra era: ");
 		for(int l=0; l<num; l++){
 			cout<<palabra[l];
 		}
-		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n");
+		printf("\n\n\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n");
 		textcolor(WHITE);
 	}
 	else{
 		puntaje=50-(2*contCuerpo);
 		textcolor(LIGHTGREEN);
-		printf("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\t\tObtuviste %d puntos.\n\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n", puntaje);
+		printf("\n\n\n\n\n\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\t\t\t\t\t\tObtuviste %d puntos.\n\n\n\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n", puntaje);
 		textcolor(WHITE);
 	}
 	system("pause");
@@ -179,7 +182,9 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 
 void title(){
 	textcolor(LIGHTRED);
-	printf("\n\n\t\t\t==============================<|  AHORCADO  |>==============================\n\n\n");
+	printf("\n\n\t\t\t==============================<|");
+	textcolor(WHITE);cout<<"  AHORCADO  ";textcolor(LIGHTRED); cout<<"|>==============================\n\n\n";
+	
 	textcolor(WHITE);
 }
 //	verifica que la letra ingresada se encuentra
