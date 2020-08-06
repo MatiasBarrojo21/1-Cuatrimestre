@@ -20,12 +20,13 @@ void cuerpo(int numParte);
 bool agrLetra(char listLetras[], char letra, int intentos, int &cantIntegradas);
 void mostrarLetras(char letras[], int cantIntegradas);
 void mostrarPalabra(char palabra[]);
+void grafPersona(int numParte);
 
 //	--------
 
 int cantLetrasP[1], puntaje[1];
 
-ahorcado(){
+main(){
 	bool Opcion=true;
 	char Jugar;
 
@@ -256,13 +257,97 @@ void cuerpo(int numParte){
 				cout<<"\n\t";
 			}
 		cout<<partesCuerpo[i];
-		//hacer if que solo permita mostrar si i es distinto de 0;
-		//UBICACION DE PARTES DEL CUERPO. EJ: cuerpoFigura(i); <---- define que figura debe mostrar
 		}
-		textcolor(WHITE);
+		
+		
 	}
+	grafPersona(numParte);
+	textcolor(WHITE);
+}
 
+void grafPersona(int numParte){
+	
+	for(int i=0; i<numParte+1; i++){
+		if(i==0){
+			for(int a=3; a<8; a++){
+				textcolor(YELLOW);
+				gotoxy(95, a); printf("%c", 178); 
+			}
+		}
+		if(i==1){
+			for(int b=90; b<101 ;b++){
+				textcolor(WHITE);
+				gotoxy(b, 8);printf("%c", 219);
+				gotoxy(b, 9);printf("%c", 219);
+				gotoxy(b, 10);printf("%c", 219);
+				gotoxy(b, 11);printf("%c", 219);
+			}
+		}
+		if(i==2){
+			textcolor(YELLOW);
+			gotoxy(93, 12);crearLineas(178, 5);
+			for(int c=13; c<21 ;c++){
+				textcolor(RED);
+				gotoxy(93, c);printf("%c", 219);
+				gotoxy(94, c);printf("%c", 219);
+				gotoxy(95, c);printf("%c", 219);
+				gotoxy(96, c);printf("%c", 219);
+				gotoxy(97, c);printf("%c", 219);
+			}
+		}
+		if(i==3){
+			for(int d=13; d<19 ;d++){
+				gotoxy(91, d);printf("%c%c", 254,254);
 
+			}
+		}
+		if(i==4){
+			for(int d=13; d<19 ;d++){
+				gotoxy(98, d);printf("%c%c", 254,254);
+
+			}
+		}
+		if(i==5){
+			textcolor(BLUE);
+			for(int d=21; d<26 ;d++){
+				gotoxy(93, d);printf("%c", 219);
+				gotoxy(94, d);printf("%c", 219);
+			}
+		}
+		if(i==6){
+			for(int d=21; d<26 ;d++){
+				gotoxy(96, d);printf("%c", 219);
+				gotoxy(97, d);printf("%c", 219);
+			}
+		}
+		if(i==7){
+			textcolor(WHITE);
+				gotoxy(91, 19);printf("%c%c", 219,219);
+		}
+		if(i==8){
+				gotoxy(98, 19);printf("%c%c", 219,219);
+		}
+		if(i==9){
+			textcolor(DARKGRAY);
+				gotoxy(93, 26);printf("%c%c", 219,219);
+		}
+		if(i==10){
+				gotoxy(96, 26);printf("%c%c", 219,219);
+		}
+		
+		
+	}
+	if(numParte<4){
+		gotoxy(9, 15);
+	}
+	if(numParte>=4){
+		gotoxy(9, 16);
+	}
+	if(numParte>=7){
+		gotoxy(9, 17);
+	}
+	
+	
 }
 // 	Verificar si la letra ya esta integrada
 bool agrLetra(char listLetras[], char letra, int intentos, int &cantIntegradas){

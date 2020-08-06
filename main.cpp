@@ -6,7 +6,6 @@
 #include "ahorcado.cpp"
 #include "Adivinum.cpp"
 
-A ICON MOVEABLE PURE LOADONCALL DISCARDABLE "nombreDelIcono.ico";
 
 using namespace std;
 
