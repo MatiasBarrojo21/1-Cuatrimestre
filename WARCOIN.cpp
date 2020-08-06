@@ -46,7 +46,7 @@ void PilaMoneda(){
 	}
 }
 void Titulo(){
-	textcolor(5);
+	textcolor(LIGHTMAGENTA);
 		for(int i=56; i<65; i++){
   			gotoxy(i, 3); printf("%c", 205);
     		gotoxy(i, 5); printf("%c", 205);
@@ -82,7 +82,7 @@ void juego(){
 			textcolor(LIGHTRED);
 			printf("\n\tInicia la partida la computadora.\n");
 		}
-			while(pila!=0 and pila>minimo){
+			while(pila>0 and pila>minimo){
 				if(verificar==2){
 					computadora();
 					textcolor(GREEN);
@@ -96,7 +96,7 @@ void juego(){
 						verificar++;
 					}
 			}
-	Sleep(1500);
+	Sleep(500);
 	system("cls");
 	
 	if(verificar==1 and pila==0){
