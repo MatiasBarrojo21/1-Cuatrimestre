@@ -26,13 +26,11 @@ void grafPersona(int numParte);
 
 int cantLetrasP[1], puntaje[1];
 
-main(){
+ahorcado(){
 	bool Opcion=true;
 	char Jugar;
-
 	while(Opcion==true){
 		start();
-
 		printf("\n\n\tQuieres volver a jugar?(s/n): ");
 		scanf("%s", &Jugar);
 		Jugar=toupper(Jugar);
@@ -41,13 +39,9 @@ main(){
 		}else{
 			system("cls");
 		}
-
 	}
-
 }
-
 //	pantalla de inicio
-
 void start(){
 	char word1[20], word2[20];
 	vaciar(word1);
@@ -73,17 +67,13 @@ void start(){
 
 	textcolor(WHITE);
 }
-
 //	limpia la variable
-
 void vaciar(char palabra[]){
 	for(int i=0; i<22; i++){
 		palabra[i]=' ';
 	}
 }
-
 //	Carga de palabra
-
 void uploadWord(char word[],char player, int &letras){
 	letras=0;
 	vaciar(word);
@@ -114,9 +104,7 @@ void uploadWord(char word[],char player, int &letras){
 	strupr(word);
 	system("cls");
 }
-
 //	juego
-
 void game(int &puntaje, char jugador, int num, char palabra[]){
 	char letraInput;
 	int contJugadas=1, contCuerpo=0, i=0;
@@ -187,7 +175,6 @@ void game(int &puntaje, char jugador, int num, char palabra[]){
 	}
 	system("pause");
 	system("cls");
-
 }
 
 void title(){
@@ -196,7 +183,6 @@ void title(){
 	textcolor(WHITE);
 }
 //	verifica que la letra ingresada se encuentra
-
 bool verificar(char letra, int n, char aux[], char palabra[], int &c){
 	letra=toupper(letra);
 	bool valor=false;
@@ -210,7 +196,6 @@ bool verificar(char letra, int n, char aux[], char palabra[], int &c){
 	return valor;
 }
 //	rellena de guiones la variable
-
 void rellenar(char aux[], int num){
 	vaciar(aux);
 	for(int i=0; i<num ; i++){
@@ -218,7 +203,6 @@ void rellenar(char aux[], int num){
 	}
 
 }
-
 void crearLineas(char simbolo, int cantidad){
 	for(int i=0; i<cantidad; i++){
 		cout<< simbolo;
@@ -226,7 +210,6 @@ void crearLineas(char simbolo, int cantidad){
 }
 // 	Cuerpo del ahorcado
 void cuerpo(int numParte){
-
 	string partesCuerpo[12];
 	partesCuerpo[0]="No hay partes plasmadas ";
 	partesCuerpo[1]=" Cabeza ";
@@ -258,13 +241,11 @@ void cuerpo(int numParte){
 			}
 		cout<<partesCuerpo[i];
 		}
-		
-		
 	}
 	grafPersona(numParte);
 	textcolor(WHITE);
 }
-
+// parte del cuerpo
 void grafPersona(int numParte){
 	
 	for(int i=0; i<numParte+1; i++){
@@ -334,8 +315,6 @@ void grafPersona(int numParte){
 		if(i==10){
 				gotoxy(96, 26);printf("%c%c", 219,219);
 		}
-		
-		
 	}
 	if(numParte<4){
 		gotoxy(9, 15);
@@ -346,8 +325,6 @@ void grafPersona(int numParte){
 	if(numParte>=7){
 		gotoxy(9, 17);
 	}
-	
-	
 }
 // 	Verificar si la letra ya esta integrada
 bool agrLetra(char listLetras[], char letra, int intentos, int &cantIntegradas){

@@ -17,7 +17,7 @@ void computadora();
 int pila=0, moneda, minimo, maximo,  extraccion=0;
 bool comienza;
 
-ahorcado(){
+main(){
 	int verificar;
 	bool op=true;
 	while(op==true){
