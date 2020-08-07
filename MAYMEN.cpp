@@ -27,7 +27,7 @@ void Inicio(int N, int Y, int Puntaje ){
 	int numMay=999, numMen=1;
 	titleMM();
 	for (int X=1; X<=10; X++){
-			printf("\n\n\t\t\t============================== Intento %d ============================== \n\n\n\t\t\t",X);
+			printf("\n\n\t\t\t============================== Intento %d/10 ============================== \n\n\n\t\t\t",X);
 			printf("EL numero se encuentra entre %d y %d\n\t\t\t", numMen, numMay);
 			printf("Ingrese el numero: ");
 			scanf("%d", &N);
@@ -118,7 +118,7 @@ void barracarga(){
 	gotoxy(25, 18);
 	
 	for(int i=0; i<4;i++){
-		Sleep(700);
+		Sleep(400);
 		crearLineas(219, 13);
 		cout<<"      ";
 	}
