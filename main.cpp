@@ -5,7 +5,8 @@
 #include <string.h>
 #include "ahorcado.cpp"
 #include "Adivinum.cpp"
-
+#include "WARCOIN.cpp"
+#include "MAYMEN.cpp"
 
 using namespace std;
 
@@ -105,9 +106,9 @@ void numeros(){
 	scanf("%d", &op);
 
 	switch(op){
-		case 1: Beep(250, 100);system("cls"); //maymen();
+		case 1: Beep(250, 100);system("cls"); maymen();
 		break;
-		case 2: Beep(250, 100);system("cls"); //warcoin();
+		case 2: Beep(250, 100);system("cls"); warcoin();
 		break;
 		case 3: Beep(250, 100);system("cls"); adivinum();
 		break;
@@ -136,9 +137,9 @@ void Juegos(){
 	switch(op){
 		case 1: Beep(250, 100);system("cls"); ahorcado();
 		break;
-		case 2: Beep(250, 100);system("cls"); // maymen();
+		case 2: Beep(250, 100);system("cls"); maymen();
 		break;
-		case 3: Beep(250, 100);system("cls"); //warcoin();
+		case 3: Beep(250, 100);system("cls"); warcoin();
 		break;
 		case 4: Beep(250, 100);system("cls"); adivinum();
 		break;

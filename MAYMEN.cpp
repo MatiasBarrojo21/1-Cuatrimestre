@@ -2,7 +2,6 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
-#include "ahorcado.cpp"
 
 
 int NumeroGenerado();
@@ -12,10 +11,24 @@ void titleMM();
 void barracarga();;
 
 
-main(){
+maymen(){
 	int n, Punt=10, y;
+	bool op=true;
+	int verificar;
+	while(op==true){
 		y= NumeroGenerado();
 		Inicio(n, y, Punt);
+		gotoxy(5, 15); printf("\n%c Quieres volver a jugar? (Para SI ingrese '1', para NO ingrese '2'): ", 175);
+		scanf("%d", &verificar);
+		printf("\n");
+				if(verificar==2){
+					op=false;
+				}
+				else{
+					system("cls");
+				}
+	}
+		
 }
 
 int NumeroGenerado(){

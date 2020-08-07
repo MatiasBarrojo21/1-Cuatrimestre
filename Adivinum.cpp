@@ -18,6 +18,7 @@ int mismaP, diferenteP, container[4];
 char Jugar;
 
 adivinum(){	
+	system("mode 80,35");
 	bool Opcion=true;
 		while(Opcion==true){
 			generarNum(container, y);
@@ -37,7 +38,7 @@ adivinum(){
 }
 
 void Titulo(){
-	textcolor(YELLOW);
+	textcolor(LIGHTCYAN);
 		for(int i=36; i<45; i++){
   			gotoxy(i, 3); printf("%c", 205);
     		gotoxy(i, 5); printf("%c", 205);
@@ -177,11 +178,11 @@ void Resultado(int resultado, int P){
 				gotoxy(60, 9); printf("%c", 187);
 				gotoxy(60, 16); printf("%c", 188);
 				
-			gotoxy(33,11); printf("¡FELICITACIONES!");
+			gotoxy(33,11); printf("%cFELICITACIONES!", 173);
 			gotoxy(27,13); printf("Acertaste! Puntaje obtenido: %d\n\n\n\n", P);
 			textcolor(WHITE);
-			printf("\n\n");
-			system("pause");
+			printf("\n\n\n");
+
 	}
 	else{
 		textcolor(LIGHTRED);
