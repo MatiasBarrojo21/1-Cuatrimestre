@@ -15,8 +15,6 @@ void barracarga();;
 main(){
 	int n, Punt=10, y;
 		y= NumeroGenerado();
-		
-		
 		Inicio(n, y, Punt);
 }
 
@@ -28,7 +26,6 @@ void Inicio(int N, int Y, int Puntaje ){
 	
 	int numMay=999, numMen=1;
 	titleMM();
-	
 	for (int X=1; X<=10; X++){
 			printf("\n\n\t\t\t============================== Intento %d ============================== \n\n\n\t\t\t",X);
 			printf("EL numero se encuentra entre %d y %d\n\t\t\t", numMen, numMay);
@@ -64,10 +61,45 @@ void Inicio(int N, int Y, int Puntaje ){
 		}
 		
 	if(Puntaje>=1){
-		printf("\n\n\n\t\t\t Acertaste! Puntaje obtenido: %d", Puntaje);
+		textcolor(GREEN);
+		for(int i=43; i<80; i++){
+			gotoxy(i, 9); printf("%c", 205); //63 28
+			gotoxy(i, 15); printf("%c", 205);
+		}
+		
+			for(int i=9; i<16; i++){
+				gotoxy(43, i); printf("%c", 186);
+				gotoxy(79, i); printf("%c", 186);
+			}
+		
+			gotoxy(43, 9); printf("%c", 201);
+			gotoxy(43, 15); printf("%c", 200);
+			gotoxy(79, 9); printf("%c", 187);
+			gotoxy(79, 15); printf("%c", 188);
+			gotoxy(46, 12); printf("Acertaste! Puntaje obtenido: %d", Puntaje);
+			textcolor(WHITE);
+			printf("\n\n\n\n\n\n\n");
 	}else{
-		printf("\n\n\n\t\t\t Perdiste! Puntaje Obtenido %d", Puntaje);
-		printf("\n\t\t\t El nuemero a adivinar era %d", Y);
+		textcolor(LIGHTRED);
+		for(int i=45; i<79; i++){
+			gotoxy(i, 9); printf("%c", 205); //63 28
+			gotoxy(i, 16); printf("%c", 205);
+		}
+		
+			for(int i=9; i<17; i++){
+				gotoxy(45, i); printf("%c", 186);
+				gotoxy(78, i); printf("%c", 186);
+			}
+		
+			gotoxy(45, 9); printf("%c", 201);
+			gotoxy(45, 16); printf("%c", 200);
+			gotoxy(78, 9); printf("%c", 187);
+			gotoxy(78, 16); printf("%c", 188);
+		
+			gotoxy(48, 12); printf("Perdiste! Puntaje Obtenido %d", Puntaje);
+			gotoxy(48, 13); printf("El nuemero a adivinar era: %d", Y);
+			textcolor(WHITE);
+			printf("\n\n\n\n\n\n\n");
 	}
 }
 
