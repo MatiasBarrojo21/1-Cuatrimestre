@@ -23,7 +23,6 @@ adivinum(){
 		while(Opcion==true){
 			generarNum(container, y);
 			Titulo();
-			printf("\n %d", y);
 			Inicio(Punt);
 			textcolor(YELLOW);
 			printf("\n\n\tQuieres volver a jugar?(s/n): ");
