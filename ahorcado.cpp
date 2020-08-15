@@ -5,6 +5,7 @@
 #include "conio.c"
 #include <string.h>
 #include <windows.h>
+#include "main.cpp"
 
 using namespace std;
 
@@ -38,6 +39,7 @@ ahorcado(){
 		if(Jugar=='N'){
 			Opcion=false;
 			system("cls");
+			main();
 		}else{
 			Opcion=true;
 			system("cls");
@@ -72,7 +74,7 @@ void start(){
 }
 //	limpia la variable
 void vaciar(char palabra[]){
-	for(int i=0; i<22; i++){
+	for(int i=0; i<23; i++){
 		palabra[i]=' ';
 	}
 }

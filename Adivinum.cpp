@@ -3,6 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include <iostream>
+#include "main.cpp"
 
 using namespace std;
 
@@ -30,10 +31,13 @@ adivinum(){
 			Jugar=toupper(Jugar);
 				if(Jugar=='N'){
 					Opcion=false;
+					system("cls");
+					main();
 				}else{
 					system("cls");
 				}
 		}
+	system("cls");
 }
 
 void Titulo(){
