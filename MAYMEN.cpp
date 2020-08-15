@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
-
+#include "main.cpp"
 
 int NumeroGenerado();
 void Inicio(int N, int Y, int Puntaje);
@@ -18,17 +18,19 @@ maymen(){
 	while(op==true){
 		y= NumeroGenerado();
 		Inicio(n, y, Punt);
-		gotoxy(5, 15); printf("\n%c Quieres volver a jugar? (Para SI ingrese '1', para NO ingrese '2'): ", 175);
+		gotoxy(5, 18); printf("\n%c Quieres volver a jugar? (Para SI ingrese '1', para NO ingrese '2'): ", 175);
 		scanf("%d", &verificar);
 		printf("\n");
 				if(verificar==2){
 					op=false;
+					system("cls");
+					main();
 				}
 				else{
 					system("cls");
 				}
 	}
-		
+	system("cls");	
 }
 
 int NumeroGenerado(){

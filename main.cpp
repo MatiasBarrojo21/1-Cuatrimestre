@@ -16,14 +16,12 @@ void Juegos();
 void letras();
 void numeros();
 void marco(int x, int y);
+		
 	
 main(){
-	int bandera=1;
 	system("mode 120, 35");
-	while(bandera=1){
-		menu();
-	}
-	
+	menu();
+	system("mode 120, 35");
 }
 
 void menu(){
@@ -45,7 +43,7 @@ void menu(){
 		break;
 		case 2: Beep(250, 100);system("cls"); Juegos();
 		break;
-		case 3: Beep(250, 100);system("exit");
+		case 3: Beep(250, 100); system("Exit");
 		break;
 		default: printf("\t\t\tOpcion no valida. Vuelva a ingresar\n\t\t\t"); system("pause"); system("cls"); menu();
 	}
@@ -116,10 +114,6 @@ void numeros(){
 		break;
 		default: printf("\t\t\tOpcion no valida. Vuelva a ingresar\n\t\t\t"); system("pause"); system("cls"); Juegos();
 	}
-
-
-
-
 }
 
 void Juegos(){
@@ -164,11 +158,3 @@ void marco(int x, int y){
 	}
 	gotoxy(x, y);
 }
-
-
-
-
-
-
-
-

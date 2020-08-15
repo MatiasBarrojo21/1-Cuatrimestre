@@ -5,6 +5,7 @@
 #include <string.h>
 #include <time.h>
 #include <windows.h>
+#include "main.cpp"
 
 void PilaMoneda();
 void TituloWC();
@@ -18,7 +19,7 @@ int pila=0, moneda, minimo, maximo,  extraccion=0, turno=0, turnoIni;
 bool comienza;
 
 warcoin(){
-	system("mode 120, 40");
+	system("mode 120, 35");
 	int verificar;
 	bool op=true;
 	while(op==true){
@@ -33,11 +34,14 @@ warcoin(){
 		printf("\n");
 				if(verificar==2){
 					op=false;
+					system("cls");
+					main();
 				}
 				else{
 					system("cls");
 				}
 	}
+	system("cls");
 }
 
 void PilaMoneda(){
@@ -121,7 +125,7 @@ void Juego(){
 					Sleep(500);
 					system("cls");
 					contador=0;
-					TituloWC;
+					TituloWC();
 					Informacion();
 				}
 		}
