@@ -1,11 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "complementos.h"
-#include <iostream>
+#include "Owntools.h"
 
-using namespace std;
-
+//Funciones
 void generarNum(int container[], int &Num);
 void Inicio();
 void verificarPosicion(int container[]);
@@ -22,12 +17,13 @@ main(){
 		while(Opcion==true){
 			generarNum(container, y);
 			Inicio();
-			textcolor(YELLOW);
-			printf("\n\n\tQuieres volver a jugar?(s/n): ");
+			printf("\n\n%c Quieres volver a jugar?(s/n): ", 175);
 			scanf("%s", &Jugar);
 			Jugar=toupper(Jugar);
 				if(Jugar=='N'){
 					Opcion=false;
+					printf("\nSaliendo del juego......\n");
+					printf("\nAdios....\n");
 				}else{
 					Punt=10;
 					system("cls");
@@ -36,11 +32,12 @@ main(){
 }
 
 void Inicio(){
-	TituloAV();
-	printf("%d", y);
+	int x=25, ejey=9, contador=0;
 	for(int i=0; i<10; i++){
+		TituloAV();
+		InstruccionesAV();
 		textcolor(LIGHTRED);
-		printf("\n\n\t\t\t%c INTENTO %d\n", 175, i+1);
+		gotoxy(x, ejey); printf("%c INTENTO %d\n", 175, i+1);
 		textcolor(WHITE);
 		printf("\n\t\tIngrese el numero: ");
 		scanf("%d", &Numero);
@@ -60,6 +57,16 @@ void Inicio(){
 				printf("\n\t\tEl numero debe tener 4 cifras. Vuelva a intentarlo.\n");
 				i--;
 			}
+		ejey=ejey+8;
+					if(contador==1){
+						printf("\n\n");
+						system("pause");
+						system("cls");
+						contador=0;
+						ejey=9;
+					}else{
+						contador++;
+					}
 	}
 	system("cls");
 	Resultado();
