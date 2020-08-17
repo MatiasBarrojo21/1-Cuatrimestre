@@ -188,7 +188,6 @@ int cputs(const char *str) // repasar
    va_list p; 
    int n;
    DWORD leidos;
-
    buffer = new char[260];
    buffer[0] = 255;
    cgets(buffer);
