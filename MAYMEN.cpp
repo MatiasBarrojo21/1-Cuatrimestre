@@ -47,7 +47,7 @@ void Inicio(int N, int Y, int Puntaje ){
 			scanf("%d", &N);
 				if(N>=1 && N<=999){
 					rango(numMay, numMen, Y, N);
-					textcolor(MAGENTA);
+					textcolor(LIGHTMAGENTA);
 						if (N==Y){
 							X=10;
 							system("cls");

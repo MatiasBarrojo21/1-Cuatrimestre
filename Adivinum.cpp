@@ -1,70 +1,43 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
-#include <iostream>
-#include "main.cpp"
+#include "Owntools.h"
 
-using namespace std;
-
-void generarNum(int container[4], int &Num);
-void Titulo();
-int Inicio(int Puntaje);
+//Funciones
+void generarNum(int container[], int &Num);
+void Inicio();
 void verificarPosicion(int container[]);
-void Resultado(int resultado, int P);
+void Resultado();
 
 //Variables globales
 int Numero, y, Punt=10;
 int mismaP, diferenteP, container[4];
 char Jugar;
 
-adivinum(){	
-	system("mode 80,35");
+main(){	
+	system("mode 120, 35");
 	bool Opcion=true;
 		while(Opcion==true){
 			generarNum(container, y);
-			Titulo();
-			Inicio(Punt);
-			textcolor(YELLOW);
-			printf("\n\n\tQuieres volver a jugar?(s/n): ");
+			Inicio();
+			printf("\n\n%c Quieres volver a jugar?(s/n): ", 175);
 			scanf("%s", &Jugar);
 			Jugar=toupper(Jugar);
 				if(Jugar=='N'){
 					Opcion=false;
-					system("cls");
-					main();
+					printf("\nSaliendo del juego......\n");
+					printf("\nAdios....\n");
 				}else{
+					Punt=10;
 					system("cls");
 				}
 		}
-	system("cls");
 }
 
-void Titulo(){
-	textcolor(LIGHTCYAN);
-		for(int i=36; i<45; i++){
-  			gotoxy(i, 3); printf("%c", 205);
-    		gotoxy(i, 5); printf("%c", 205);
- 		 }
-  			for(int i=3; i<5; i++){
-    			gotoxy(36, i); printf("%c", 186);
-    			gotoxy(45, i); printf("%c", 186);
-			}
-	
-	gotoxy(36, 3); printf("%c", 201);
-	gotoxy(36, 5); printf("%c", 200);
-	gotoxy(45, 3); printf("%c", 187);
-	gotoxy(45, 5); printf("%c", 188);
-	
-	gotoxy(3, 4); printf("===============================>");
-	gotoxy(37, 4); printf("ADIVINUM");
-	gotoxy(47,4); printf("<===============================");
-}
-
-int Inicio(int Puntaje){
+void Inicio(){
+	int x=25, ejey=9, contador=0;
 	for(int i=0; i<10; i++){
+		TituloAV();
+		InstruccionesAV();
 		textcolor(LIGHTRED);
-		printf("\n\n\t\t\t%c INTENTO %d\n", 175, i+1);
+		gotoxy(x, ejey); printf("%c INTENTO %d\n", 175, i+1);
 		textcolor(WHITE);
 		printf("\n\t\tIngrese el numero: ");
 		scanf("%d", &Numero);
@@ -76,7 +49,7 @@ int Inicio(int Puntaje){
 				else{
 					textcolor(3);
 					printf("\n\t\t° Cant. Misma Posicion: %d  ° Cant. Otra Posicion: %d\n", mismaP, diferenteP);
-					Puntaje--;
+					Punt--;
 				}
 			}
 			else{
@@ -84,25 +57,19 @@ int Inicio(int Puntaje){
 				printf("\n\t\tEl numero debe tener 4 cifras. Vuelva a intentarlo.\n");
 				i--;
 			}
-			
-			/*if(i==1){
-				system("cls");
-			}
-				if(i==3){
+		ejey=ejey+8;
+					if(contador==1){
+						printf("\n\n");
+						system("pause");
 						system("cls");
-					}*/
+						contador=0;
+						ejey=9;
+					}else{
+						contador++;
+					}
 	}
 	system("cls");
-	Titulo();
-	int z=0, x=1;
-		if (Puntaje>=1){
-			Resultado(x, Puntaje);
-			
-		}
-		else{
-			Resultado(z, Puntaje);
-		}
-
+	Resultado();
 }
 
 void generarNum(int container[4], int &Num){
@@ -143,7 +110,6 @@ void generarNum(int container[4], int &Num){
 
 void verificarPosicion(int container[]){
 	int x[4], k=1000, t=3, aux=Numero;
-	
 	mismaP=0;
 	diferenteP=0;
 		while(k>0){
@@ -164,50 +130,26 @@ void verificarPosicion(int container[]){
 		}
 }
 
-void Resultado(int resultado, int P){
-	if(resultado==1){
+void Resultado(){
+	int Ganador=1, Perdedor=0;
+	TituloAV();
+	if(Punt>=1){
+		MarcoResultadoAV(Ganador);
 		textcolor(GREEN);
-			for(int i=22; i<61; i++){
-				gotoxy(i, 9); printf("%c", 205);
-				gotoxy(i, 16); printf("%c", 205);
-			}
-				for(int i=9; i<16; i++){
-					gotoxy(22, i); printf("%c", 186);
-					gotoxy(60, i); printf("%c", 186);
-				}
-				
-				gotoxy(22, 9); printf("%c", 201);
-				gotoxy(22, 16); printf("%c", 200);
-				gotoxy(60, 9); printf("%c", 187);
-				gotoxy(60, 16); printf("%c", 188);
-				
-			gotoxy(33,11); printf("%cFELICITACIONES!", 173);
-			gotoxy(27,13); printf("Acertaste! Puntaje obtenido: %d\n\n\n\n", P);
-			textcolor(WHITE);
-			printf("\n\n\n");
-
+		gotoxy(53,11); printf("%cFELICITACIONES!", 173);
+		gotoxy(47,13); printf("Acertaste! Puntaje obtenido: %d\n\n\n\n", Punt);
+		textcolor(WHITE);
+		printf("\n\n");
+		system("pause");
 	}
 	else{
-		textcolor(LIGHTRED);
-			for(int i=22; i<61; i++){
-				gotoxy(i, 9); printf("%c", 205);
-				gotoxy(i, 17); printf("%c", 205);
-			}
-				for(int i=9; i<18; i++){
-					gotoxy(22, i); printf("%c", 186);
-					gotoxy(60, i); printf("%c", 186);
-				}
-				
-				gotoxy(22, 9); printf("%c", 201);
-				gotoxy(22, 17); printf("%c", 200);
-				gotoxy(60, 9); printf("%c", 187);
-				gotoxy(60, 17); printf("%c", 188);
-				
-			gotoxy(37,11); printf("Perdiste!");
-			gotoxy(32,13); printf("Puntaje obtenido: %d", P);
-			gotoxy(27,15); printf("El numero a adivinar era el %d\n\n\n\n", y);
-			textcolor(WHITE);
-			printf("\n\n");
-			system("pause");
+		MarcoResultadoAV(Perdedor);
+		textcolor(LIGHTRED);			
+		gotoxy(57,11); printf("Perdiste!");
+		gotoxy(52,13); printf("Puntaje obtenido: %d", Punt);
+		gotoxy(47,15); printf("El numero a adivinar era el %d\n\n\n\n", y);
+		textcolor(WHITE);
+		printf("\n\n");
+		system("pause");
 	}
 }
