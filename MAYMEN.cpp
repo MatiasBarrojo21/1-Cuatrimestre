@@ -1,6 +1,6 @@
 #include "Owntools.h"
 
-//Fucniones
+//DECLARACION DE FUNCIONES
 int NumeroGenerado();
 void Inicio(int N, int Y, int Puntaje);
 void rango(int &mayor, int &menor, int NumOrig, int Num_Ingresado);
@@ -26,10 +26,14 @@ main(){
 	}
 }
 
+// GENERADOR DE NUMERO SECRETO (3 CIFRAS)
+
 int NumeroGenerado(){
 	srand(time(NULL)); 
 	return 1 + rand()%(999+1 - 1);
 }
+
+// CUERPO DEL JUEGO 
 
 void Inicio(int N, int Y, int Puntaje ){
 	int numMay=999, numMen=1;
@@ -82,6 +86,8 @@ void Inicio(int N, int Y, int Puntaje ){
 	system("cls");
 	MarcoResultadoMYM(Puntaje, Y);
 }
+
+// UPGRADE DE LIMITES DEL RANGO EN EL CUAL SE ENCUENTRA EL NUMERO A BUSCAR
 
 void rango(int &mayor, int &menor, int NumOrig, int Num_Ingresado){
 	if(Num_Ingresado<NumOrig and Num_Ingresado>menor){

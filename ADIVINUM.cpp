@@ -1,6 +1,6 @@
 #include "Owntools.h"
 
-//Funciones
+//DECLARACION DE FUNCIONES
 void generarNum(int container[], int &Num);
 void Inicio();
 void verificarPosicion(int container[]);
@@ -30,6 +30,8 @@ main(){
 				}
 		}
 }
+
+// CUERPO DEL JUEGO
 
 void Inicio(){
 	int x=25, ejey=9, contador=0;
@@ -72,6 +74,9 @@ void Inicio(){
 	Resultado();
 }
 
+// GENERADOR DE NUMERO SECRETO (GENERA NUMEROS UNO POR UNO EN UN ARRAY PARA PODER VERIFICAR LA POSICION 
+// Y LOS CONCATENA EN OTRA VARIBLE PARA PODER MOSTRARLO AL FINAL)
+
 void generarNum(int container[4], int &Num){
 	int Num_Generado=0, t=0, k=1;
 	bool verif;
@@ -108,6 +113,8 @@ void generarNum(int container[4], int &Num){
 	Num=Num_Generado;
 }
 
+// VERIFICACION DE POSICIONES DE LOS NUMEROS EN LA CIFRA INGRESADA
+
 void verificarPosicion(int container[]){
 	int x[4], k=1000, t=3, aux=Numero;
 	mismaP=0;
@@ -129,6 +136,8 @@ void verificarPosicion(int container[]){
 			}
 		}
 }
+
+// VISUALIZADOR DE RESULTADOS FINALES
 
 void Resultado(){
 	int Ganador=1, Perdedor=0;

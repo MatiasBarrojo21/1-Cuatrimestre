@@ -1,6 +1,6 @@
 #include "Owntools.h"
 
-//Funciones
+//DECLARACION DE FUNCIONES
 void Juego();
 void PilaMoneda();
 void PedirDatos();
@@ -29,6 +29,8 @@ main(){
 				}
 	}
 }
+
+// CUERPO DEL JUEGO
 
 void Juego(){
 	int contador=0, terminar=1, pilaOrg=pila, rltPila=5;
@@ -91,10 +93,14 @@ void Juego(){
 	MarcoResultadoWC(turno);
 }
 
+// GENERADOR DE CANTIDAD DE MONEDAS QUE HAY EN LA PILA
+
 void PilaMoneda(){
 	srand(time(NULL));
 	pila=10+rand()%(50+1-10);
 }
+
+// DECRETO DE LIMETES PARA LA EXTRACCIÓN (MÍNIMA Y MÁXIMA) DE LA PILA DE MONEDAS
 
 void PedirDatos(){
 	textcolor(WHITE); 
@@ -104,6 +110,8 @@ void PedirDatos(){
 	scanf("%d", &maximo);
 	gotoxy(5,12); printf("\t-------------------------------------------------------------------------------------------------------\n");
 }
+
+// DECRETADO DE TURNO PRIMARIO (ALEATORIO)
 
 void GenerarTurno(){
 	turno= 1 + rand()%(2+1 - 1);
@@ -115,6 +123,8 @@ void GenerarTurno(){
 		}
 	gotoxy(0,13);
 }
+
+// INFORME DE LIMITES DECRETADOS PARA LA EXTRACCIÓN (MÍNIMA Y MÁXIMA) DE LA PILA DE MONEDAS
 
 void Informacion(){
 	textcolor(WHITE); 

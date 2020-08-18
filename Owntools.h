@@ -7,19 +7,11 @@
 
 using namespace std;
 
-//Funciones
-void TituloAV();
-void MarcoResultadoMYM(int x);
-void InstruccionesAV();
-void TituloMYM();
-void MarcoResultadoMYM(int PUNTAJE, int Numero);
-void TituloWC();
-void MarcoResultadoWC(int TURNO);
-void TituloAH();
-void crearLineas(char simbolo, int cantidad);
-void grafPersona(int numParte);
+// OWN TOOLS = "HERRAMIENTAS PROPIAS"
 
-//Esta funcion genera el titulo y el encabezado del juego Adivinum,
+
+// GENERADOR DE TÍTULO Y ENCABEZADO DE ADIVINUM
+
 void TituloAV(){
 	textcolor(LIGHTCYAN);
 		for(int i=56; i<65; i++){ //36 45
@@ -40,7 +32,8 @@ void TituloAV(){
 	gotoxy(68,4); printf("<============================================");
 }
 
-//Genera el marco del resultado de la partida del juego Adivinum.
+// VISUALIZADOR DE RESULTADO DE LA PARTIDA DEL ADIVINUM
+
 void MarcoResultadoAV(int x){
 	if(x==1){
 		textcolor(GREEN);
@@ -76,7 +69,8 @@ void MarcoResultadoAV(int x){
 		}
 }
 
-//Esta funcion genera una tabla donde se mostrara las instrucciones para el juego Adivinum.
+// MUESTRA DE CUADRO CON INFORMACION (INSTRUCCIONES DEL JUEGO) DE ADIVINUM
+
 void InstruccionesAV(){
 	textcolor(WHITE);
 	for(int i=81; i<119; i++){
@@ -103,7 +97,8 @@ void InstruccionesAV(){
 	gotoxy(84, 23); printf("de 4 cifras");
 }
 
-//Genera el titulo y encabezado del juego Maymen.
+// GENERADOR DE TÍTULO Y ENCABEZADO DE MAYMEN
+
 void TituloMYM(){
 	textcolor(YELLOW);
 		for(int i=50; i<73; i++){
@@ -144,7 +139,8 @@ void TituloMYM(){
 	gotoxy(59, 5);printf("MAYMEN");
 }
 
-//Genera el marco del resultado de la partida del juego MayMen, y indica si el usuario gano o perdio, con su puntaje correspondiente
+// GENERADOR DE MARCO CON RESULTADO (GANADOR O PERDEDOR, PUNTAJE) DE MAYMEN
+
 void MarcoResultadoMYM(int PUNTAJE, int Numero){
 	if(PUNTAJE>=1){
 		textcolor(GREEN);
@@ -186,7 +182,7 @@ void MarcoResultadoMYM(int PUNTAJE, int Numero){
 	}
 }
 
-//Genera el titulo y encabezado del juego WarCoin
+// GENERADOR DE TÍTULO Y ENCABEZADO DE WARCOIN
 void TituloWC(){
 	textcolor(LIGHTMAGENTA);
 		for(int i=56; i<65; i++){
@@ -206,7 +202,8 @@ void TituloWC(){
 	gotoxy(67,4); printf("<============================================");
 }
 
-//Genera el marco del resultado de la partida del juego WarCoin, y indica si el usuario gano o perdio.
+//GENERADOR DE MARCO DEL RESULTADO, E INDICA SI EL USIARIO GANÓ O PERDIÓ (WARCOIN)
+
 void MarcoResultadoWC(int TURNO){
 	if(TURNO==1){
 		textcolor(GREEN);
@@ -240,7 +237,8 @@ void MarcoResultadoWC(int TURNO){
 		gotoxy(40, 10); printf("LA COMPUTADORA GANO!!! Puntaje obtenido: 0");
 	}
 }
- //Titulo y ecabezado del juego ahorcado
+ //TÍTULO Y ENCABEZADO DEL AHORCADO
+ 
 void TituloAH(){
 	textcolor(LIGHTRED);
 	printf("\n\n\t\t\t==============================<|");
@@ -248,14 +246,16 @@ void TituloAH(){
 	textcolor(WHITE);
 }
 
-//crea las lineas del juego ahorcado
+// GENERADOR DE LINEAS 
+
 void crearLineas(char simbolo, int cantidad){
 	for(int i=0; i<cantidad; i++){
 		cout<< simbolo;
 	}
 }
 
-// Grafico de las parte del cuerpo del juego ahorcado
+//  VISUALIZADOR DE PARTES DEL CUERPO DEL AHORCADO EN FORMA GRÁFICA
+
 void grafPersona(int numParte){
 	
 	for(int i=0; i<numParte+1; i++){

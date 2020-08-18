@@ -1,6 +1,6 @@
 #include "Owntools.h"
 
-//Funciones
+//DECLARACION DE FUNCIONES
 void uploadWord(char word[],char player, int &letras);
 void start();
 void game(int &puntaje, char jugador, int num, char palabra[]);
@@ -34,7 +34,9 @@ main(){
 			}
 	}
 }
+
 //	pantalla de inicio
+
 void start(){
 	char word1[20], word2[20];
 	
@@ -59,13 +61,17 @@ void start(){
 				}
 	textcolor(WHITE);
 }
+
 //	limpia la variable
+
 void vaciar(char palabra[]){
 	for(int i=0; i<23; i++){
 		palabra[i]=' ';
 	}
 }
+
 //	Carga de palabra
+
 void uploadWord(char word[],char player, int &letras){
 	letras=0;
 	vaciar(word);
@@ -95,7 +101,9 @@ void uploadWord(char word[],char player, int &letras){
 	strupr(word);
 	system("cls");
 }
-//	juego
+
+//	CUERPO DEL JUEGO
+
 void game(int &puntaje, char jugador, int num, char palabra[]){
 	char letraInput;
 	int contJugadas=1, contCuerpo=0, i=0;
@@ -189,7 +197,7 @@ void rellenar(char aux[], int num){
 		}
 }
 
-// 	Cuerpo del ahorcado
+//  VISUALIZADOR DE PARTES DEL CUERPO EN FORMA VERBAL
 void cuerpo(int numParte){
 	string partesCuerpo[12];
 	partesCuerpo[0]="No hay partes plasmadas ";
@@ -228,7 +236,7 @@ void cuerpo(int numParte){
 }
 
 
-// 	Verificar si la letra ya esta integrada
+// 	VERIFICACION DE LETRA INGRESADA
 bool agrLetra(char listLetras[], char letra, int intentos, int &cantIntegradas){
 	bool valor=true;
 	letra=toupper(letra);
@@ -247,6 +255,8 @@ bool agrLetra(char listLetras[], char letra, int intentos, int &cantIntegradas){
 				return true;
 			}
 }
+
+// VISULIZADOR DE LETRAS YA INGRESADAS
 
 void mostrarLetras(char letras[], int cantIntegradas){
 	for(int i=0; i<cantIntegradas; i++){
