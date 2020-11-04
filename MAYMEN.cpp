@@ -93,7 +93,12 @@ void rango(int &mayor, int &menor, int NumOrig, int Num_Ingresado){
 	if(Num_Ingresado<NumOrig and Num_Ingresado>menor){
 		menor=Num_Ingresado;
 	}
-		if(Num_Ingresado>NumOrig and Num_Ingresado<mayor){
-			mayor=Num_Ingresado;
-		}
+	if(Num_Ingresado>NumOrig and Num_Ingresado<mayor){
+		mayor=Num_Ingresado;
+	}
 }
+
+
+
+
+
